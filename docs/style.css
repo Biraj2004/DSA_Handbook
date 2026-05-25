@@ -757,6 +757,18 @@ a:hover {
   margin-bottom: 48px;
   max-width: 600px;
 }
+.syllabus-header {
+  border-bottom: var(--border-width) solid var(--border-color);
+  padding-top: 48px;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+.syllabus-header p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 700px;
+  margin-bottom: 0;
+}
 .section-pre {
   font-family: var(--font-mono);
   font-weight: 700;
@@ -1837,6 +1849,23 @@ a:hover {
   }
   body {
     font-size: 15px;
+  }
+  .section-header {
+    text-align: center;
+    margin: 0 auto 32px auto;
+  }
+  .syllabus-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px !important;
+    padding-bottom: 16px !important;
+    margin-bottom: 24px !important;
+  }
+  .syllabus-header p {
+    margin: 0 auto;
+    font-size: 0.95rem;
   }
   .nav-container {
     height: 60px;
