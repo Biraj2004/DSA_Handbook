@@ -310,11 +310,14 @@
           card.className = `card chapter-card ${ch.class}`;
           card.setAttribute("data-ch", ch.num);
           card.innerHTML = `
+            <div class="chapter-card-action" title="Click to view details">
+              <i data-lucide="arrow-up-right" style="width: 14px; height: 14px;"></i>
+            </div>
             <div class="chapter-number">CHAPTER ${ch.num}</div>
             <h3 class="chapter-name">${ch.title}</h3>
             <p class="chapter-summary">${ch.summary}</p>
             <div class="chapter-interactive-hint">
-              <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> View Syllabus
+              <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> View Details
             </div>
           `;
           card.addEventListener("click", () => openDrawer(ch.num));

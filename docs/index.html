@@ -19,7 +19,6 @@
       </a>
       
       <ul class="nav-links">
-        <li class="nav-item"><a href="#hero">Overview</a></li>
         <li class="nav-item"><a href="#pages">Page Preview</a></li>
         <li class="nav-item"><a href="#curriculum">Curriculum</a></li>
         <li class="nav-item"><a href="#visualizer">Playground</a></li>
@@ -41,12 +40,17 @@
   <!-- Mobile Navigation Drawer -->
   <nav class="mobile-nav" id="mobile-menu">
     <ul class="mobile-nav-links">
-      <li class="mobile-nav-item"><a href="#hero">Overview</a></li>
       <li class="mobile-nav-item"><a href="#pages">Page Preview</a></li>
       <li class="mobile-nav-item"><a href="#curriculum">Curriculum</a></li>
       <li class="mobile-nav-item"><a href="#visualizer">Playground</a></li>
+      <li class="mobile-nav-item" style="margin-top: 8px;">
+        <a href="https://github.com/Biraj2004/DSA_Handbook" target="_blank" id="mobile-version-badge" class="badge neon-glow" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-sans); text-transform: uppercase; padding: 12px; border: 2px solid var(--border-color); box-shadow: 3px 3px 0px var(--border-color); font-weight: 700; font-size: 0.85rem; border-radius: var(--border-radius); background-color: var(--neon-yellow); color: var(--border-color);">
+          <i data-lucide="git-branch"></i> Fetching...
+        </a>
+      </li>
     </ul>
   </nav>
+
 
   <!-- ── Hero Section ───────────────────────────────────────────────────────── -->
   <section class="hero" id="hero">
@@ -56,7 +60,11 @@
       <div class="hero-info">
         <div class="hero-tag">
           <i data-lucide="sparkles"></i>
-          <span>XeLaTeX Compiled • Java Edition</span>
+          <span class="hero-tag-text">
+            <span class="tag-part">XeLaTeX Compiled</span>
+            <span class="tag-divider"> • </span>
+            <span class="tag-part">Java Edition</span>
+          </span>
         </div>
         
         <h1 class="hero-title">
@@ -229,6 +237,22 @@
 
       <div class="reader-container">
         
+        <!-- Mobile Preview Overlay Message -->
+        <div class="mobile-preview-overlay">
+          <div class="mobile-preview-overlay-content">
+            <div class="mobile-preview-icon">
+              <i data-lucide="monitor"></i>
+            </div>
+            <h3>Desktop View Recommended</h3>
+            <p>To preview the pages, desktop or tablet view is recommended. Alternatively, you can download the full PDF below to view it properly.</p>
+            <div class="mobile-preview-cta">
+              <a href="https://github.com/Biraj2004/DSA_Handbook/releases/download/v2.2.0/DSA_Handbook_CH_1-11.pdf" target="_blank" class="btn yellow" style="box-shadow: 3px 3px 0 var(--border-color);">
+                <i data-lucide="download"></i> Download Full PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Controls -->
         <div class="reader-controls">
           <span class="reader-page-indicator">
@@ -614,7 +638,7 @@
         
         <!-- Left Side: Sorting Visualizer (Neo-Brutalism Style) -->
         <div class="visualizer-container">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div class="visualizer-header">
             <h3 style="font-family: var(--font-sans); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
               <i data-lucide="bar-chart-3"></i> Sorting Visualizer
             </h3>

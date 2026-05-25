@@ -251,7 +251,6 @@ function setupMenu() {
 
   // Scroll-spy for Homepage Navigation Header Links
   const navSections = [
-    document.getElementById("hero"),
     document.getElementById("pages"),
     document.getElementById("curriculum"),
     document.getElementById("visualizer")
@@ -260,7 +259,7 @@ function setupMenu() {
   const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
 
   function highlightNav() {
-    let currentSection = "hero";
+    let currentSection = "";
     
     // Check which section is in viewport
     navSections.forEach(section => {
@@ -301,6 +300,7 @@ function setupMenu() {
 // ── Version Tracker & GitHub API Wiring ────────────────────────────────── */
 async function fetchReleaseInfo() {
   const badge = document.getElementById("version-badge");
+  const mobileBadge = document.getElementById("mobile-version-badge");
   const trackerVersion = document.getElementById("tracker-version");
   const trackerDate = document.getElementById("tracker-date");
   const trackerSize = document.getElementById("tracker-size");
@@ -319,10 +319,11 @@ async function fetchReleaseInfo() {
 
   // Helper to set UI to values
   const setReleaseUI = (tag, date, size, pdfUrl, pageCount) => {
-    badge.innerHTML = `<i data-lucide="git-branch"></i> ${tag}`;
-    trackerVersion.textContent = tag;
-    trackerDate.textContent = date;
-    trackerSize.textContent = size;
+    if (badge) badge.innerHTML = `<i data-lucide="git-branch"></i> ${tag}`;
+    if (mobileBadge) mobileBadge.innerHTML = `<i data-lucide="git-branch"></i> ${tag}`;
+    if (trackerVersion) trackerVersion.textContent = tag;
+    if (trackerDate) trackerDate.textContent = date;
+    if (trackerSize) trackerSize.textContent = size;
     
     heroDlBtn.href = pdfUrl;
     trackerDlBtn.href = GITHUB_RELEASE_PAGE;
@@ -408,6 +409,7 @@ function setupReader() {
   const adjustPageScale = () => {
     const pages = document.querySelectorAll(".book-page");
     if (!pageViewport || pages.length === 0) return;
+    if (pageViewport.offsetParent === null) return; // Exit early if viewport is hidden on mobile
 
     const viewportWidth = pageViewport.clientWidth;
     const pageWidth = 780; // virtual base width
@@ -506,11 +508,14 @@ function renderChapters() {
     card.setAttribute("data-ch", ch.num);
     
     card.innerHTML = `
+      <div class="chapter-card-action" title="Click to view details">
+        <i data-lucide="arrow-up-right" style="width: 14px; height: 14px;"></i>
+      </div>
       <div class="chapter-number">CHAPTER ${ch.num}</div>
       <h3 class="chapter-name">${ch.title}</h3>
       <p class="chapter-summary">${ch.summary}</p>
       <div class="chapter-interactive-hint">
-        <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> View Syllabus
+        <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> View Details
       </div>
     `;
 
@@ -648,10 +653,25 @@ function setupVisualizer() {
   const algoBadge = document.getElementById("visualizer-algo-badge");
   const runBtn = document.getElementById("algo-run-btn");
   const runText = document.getElementById("algo-run-text");
-  const runIcon = document.getElementById("algo-run-icon");
   const stepBtn = document.getElementById("algo-step-btn");
   const resetBtn = document.getElementById("algo-reset-btn");
   const logNode = document.getElementById("visualizer-log");
+
+  const updateRunIcon = (iconName) => {
+    const iconNode = document.getElementById("algo-run-icon");
+    if (iconNode) {
+      const iElement = document.createElement("i");
+      iElement.id = "algo-run-icon";
+      iElement.setAttribute("data-lucide", iconName);
+      iconNode.replaceWith(iElement);
+      lucide.createIcons({
+        attrs: {
+          "stroke-width": 2.5,
+          "stroke": "currentColor"
+        }
+      });
+    }
+  };
 
   let array = [];
   const arraySize = 12;
@@ -677,8 +697,7 @@ function setupVisualizer() {
     stopSorting = false;
     sortingInProgress = false;
     runText.textContent = "Run";
-    runIcon.setAttribute("data-lucide", "play");
-    lucide.createIcons({ attrs: { "stroke-width": 2.5, "stroke": "currentColor" } });
+    updateRunIcon("play");
     
     logNode.textContent = "Status: New array generated. Ready to sort.";
     renderBars();
@@ -796,8 +815,7 @@ function setupVisualizer() {
     sortingInProgress = true;
     stopSorting = false;
     runText.textContent = "Pause";
-    runIcon.setAttribute("data-lucide", "pause");
-    lucide.createIcons({ attrs: { "stroke-width": 2.5, "stroke": "currentColor" } });
+    updateRunIcon("pause");
 
     while (!isSorted && !stopSorting) {
       await stepSort();
@@ -806,8 +824,7 @@ function setupVisualizer() {
 
     sortingInProgress = false;
     runText.textContent = "Run";
-    runIcon.setAttribute("data-lucide", "play");
-    lucide.createIcons({ attrs: { "stroke-width": 2.5, "stroke": "currentColor" } });
+    updateRunIcon("play");
   };
 
   // Controls Event Listeners
@@ -817,8 +834,7 @@ function setupVisualizer() {
       stopSorting = true;
       sortingInProgress = false;
       runText.textContent = "Run";
-      runIcon.setAttribute("data-lucide", "play");
-      lucide.createIcons({ attrs: { "stroke-width": 2.5, "stroke": "currentColor" } });
+      updateRunIcon("play");
       logNode.textContent = "Status: Execution paused.";
     } else {
       runSort();
