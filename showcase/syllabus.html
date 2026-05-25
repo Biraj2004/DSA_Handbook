@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syllabus Roadmap — DSA Handbook (Java Edition)</title>
+  <meta name="description" content="Detailed curriculum syllabus roadmap for the DSA Handbook by Biraj. Complete list of chapters, topics, and interview questions.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'&gt;&lt;circle cx='12' cy='12' r='10.5' fill='%23FF007F' stroke='%231A1A1A' stroke-width='1.5'/&gt;&lt;g transform='translate(3.6, 3.6) scale(0.7)'&gt;&lt;path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;/g&gt;&lt;/svg&gt;">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Scoped styling for page transition and behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Scroll to Top Floating Button */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      background-color: var(--neon-magenta);
+      color: #fff;
+      border: var(--border-width) solid var(--border-color);
+      border-radius: 50%;
+      box-shadow: 4px 4px 0px var(--border-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.9);
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.1s ease, background-color 0.15s ease;
+    }
+    .scroll-top-btn.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0) scale(1);
+    }
+    .scroll-top-btn.active:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 6px 6px 0px var(--border-color);
+    }
+    .scroll-top-btn.active:active {
+      transform: translate(2px, 2px) scale(0.98);
+      box-shadow: 2px 2px 0px var(--border-color);
+    }
+    
+    @media (max-width: 480px) {
+      .scroll-top-btn {
+        bottom: 16px;
+        right: 16px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .hide-mobile {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ────────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i data-lucide="book-open"></i></div>
+        <span>Biraj's Notes</span>
+      </a>
+      
+      <a href="index.html" class="btn secondary" style="font-size: 0.75rem; padding: 8px 16px; box-shadow: 3px 3px 0 var(--border-color);">
+        <i data-lucide="arrow-left"></i> Back<span class="hide-mobile"> to Showcase</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ── Main Content ──────────────────────────────────────────────────────── -->
+  <main class="container">
+    
+    <!-- Hero Header -->
+    <div style="border-bottom: var(--border-width) solid var(--border-color); padding-top: 48px; padding-bottom: 24px; margin-bottom: 32px;">
+      <span class="section-pre">Complete Contents</span>
+      <h1 class="hero-title" style="font-size: clamp(2rem, 6vw, 3.2rem); margin-bottom: 8px;">Detailed Syllabus Roadmap</h1>
+      <p style="font-size: 1.1rem; color: #444; max-width: 700px;">
+        Explore all 11 chapters in the DSA Handbook. Click any card below to open its detailed curriculum roadmap, chapter snapshots, and interview breakdowns.
+      </p>
+    </div>
+
+    <!-- Chapters Grid -->
+    <div class="grid-4" id="chapters-grid" style="margin-top: 40px; margin-bottom: 80px;">
+      <!-- Cards populated dynamically via JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- Chapter Syllabus Overlay Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-header">
+      <div class="drawer-title-block">
+        <span id="drawer-chapter-number">CHAPTER 1</span>
+        <h3 id="drawer-chapter-title">Fundamentals of Programming</h3>
+      </div>
+      <button class="drawer-close" id="drawer-close-btn" aria-label="Close details">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <h4 style="font-family: var(--font-sans); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--latex-myred); margin-bottom: 16px;">
+        Curriculum Roadmap
+      </h4>
+      <ul class="drawer-syllabus-list" id="drawer-syllabus">
+        <!-- List items populated dynamically -->
+      </ul>
+
+      <h4 style="font-family: var(--font-sans); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--latex-myblue); margin-bottom: 16px;">
+        Chapter Snapshot
+      </h4>
+      <p id="drawer-description" class="latex-body" style="font-family: var(--font-sans); line-height: 1.6; font-size: 0.95rem; color: #333;">
+        Detailed information will appear here.
+      </p>
+    </div>
+  </aside>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top-btn" id="scroll-top-btn" title="Scroll to Top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- ── Footer ────────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-bottom" style="margin-top: 0; padding-top: 0; border-top: none;">
+      <span>&copy; 2026 Biraj's Notes. All rights reserved.</span>
+      <span>
+        <a href="index.html">Back to Showcase</a> &nbsp;|&nbsp; 
+        <a href="https://github.com/Biraj2004" target="_blank">github.com/Biraj2004</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ────────────────────────────────────────────────────────────── -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    const CHAPTERS_DATA = [
+      {
+        num: 1,
+        title: "Fundamentals of Programming",
+        summary: "Basic programming paradigms, compiler execution lifecycle, and design blueprints.",
+        class: "peach",
+        description: "This chapter establishes the core transition from source code to machine execution. It is tailored for beginners, showing how Java compiles into bytecode run by the JVM, and maps out execution logic via flowchart symbols and pseudocode structures.",
+        syllabus: [
+          "Introduction to program mechanics & algorithms",
+          "Java compiler lifecycle (Source Code -> Bytecode -> JVM execution)",
+          "Anatomy of a standard 'Hello World' program (Every line dry run)",
+          "Standard flowchart symbols (Terminators, Process boxes, Decision diamonds)",
+          "Pseudocode templates for basic operations (e.g., Odd/Even checks)"
+        ]
+      },
+      {
+        num: 2,
+        title: "Java Language Basics",
+        summary: "Variables, primitive families, Scanner buffer traps, and coordinate pattern layouts.",
+        class: "mint",
+        description: "Deep dive into language variables, stack memory structures, arithmetic traps, Scanner input streams, and basic console formatting. Includes 26 coordinate-indexed nested loop pattern problems with grid layouts.",
+        syllabus: [
+          "Variables & the 8 Primitive Types (byte, short, int, long, float, double, char, boolean)",
+          "Arithmetic operators & the integer division decimal drop trap",
+          "User Input via Scanner class, formatting with printf, nextInt() buffer newline trap",
+          "Control flow (Conditionals, loops, method definitions, parameter passing)",
+          "26 classic pattern printing problems (Solid/Hollow triangles, Pyramids, Diamonds, butterflies) with visual grid layouts"
+        ]
+      },
+      {
+        num: 3,
+        title: "Time and Space Complexity",
+        summary: "Big-O definitions, growth rate parsing, loops counting, and call stacks analysis.",
+        class: "lavender",
+        description: "Teaches the mathematical foundations of asymptotic analysis. Explains the hierarchy of Big-O complexity classes, visualizes growth behaviors, and provides concrete examples for parsing loops, nested loops, and recursion stacks.",
+        syllabus: [
+          "Mathematical rationale behind Big-O complexity classes",
+          "Complexity hierarchy: O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ) < O(n!)",
+          "Rules for parsing loops, nested loops, and consecutive loop segments",
+          "Auxiliary Space vs Total Space Complexity",
+          "Recursive call stack footprint analysis"
+        ]
+      },
+      {
+        num: 4,
+        title: "Basic Mathematics for DSA",
+        summary: "Integer arithmetic properties, Euclidean GCD, prime tests, and overflow limits.",
+        class: "blue",
+        description: "Focuses on essential mathematical operations used in coding interviews. Covers operations on digits, reversing integers safely, checking mathematical palindromes, and prime number testing algorithms.",
+        syllabus: [
+          "Extracting and counting digits of a number",
+          "Reversing digits of a number with integer overflow checks",
+          "Checking mathematical palindromes",
+          "Euclidean algorithm for Greatest Common Divisor (GCD) and LCM",
+          "Prime number testing via trial division up to O(√n)"
+        ]
+      },
+      {
+        num: 5,
+        title: "1-D Arrays",
+        summary: "Contiguous slot layouts, searches, two-pointer scans, and Leaders scans.",
+        class: "yellow",
+        description: "Examines array storage mechanisms in contiguous memory slots, basic linear scans, and introduces the two-pointer optimal scanning technique. Topics include rotations, finding missing items, and leaders identification.",
+        syllabus: [
+          "Array memory layout (Contiguous slots, reference pointers, indices)",
+          "Basic array operations: Access, linear search, finding min/max, sorted check",
+          "Array reversal (In-place swap) & Left rotation by 1 and k steps",
+          "Zero movement optimal O(n) Time / O(1) Space two-pointer solution",
+          "Hashing/Two-pointer problems: Two Sum, Union/Intersection, Leaders scan"
+        ]
+      },
+      {
+        num: 6,
+        title: "Array Problems — Interview Revision",
+        summary: "Quick-reference complexity matrices and edge case review checklists.",
+        class: "peach",
+        description: "A compact checklist review chapter consolidating sorting bounds, array traversal pitfalls, and edge cases. Serves as a reference guide immediately before technical screening interviews.",
+        syllabus: [
+          "Quick-reference time & space complexity tables for core array actions",
+          "Array boundary checklist (Empty arrays, single elements, large integer bounds)",
+          "Common array interview bugs and how to avoid them",
+          "Key pointers, indices, and temp variables review templates"
+        ]
+      },
+      {
+        num: 7,
+        title: "Sorting Algorithms",
+        summary: "Stability grids and steps for Selection, Bubble, Insertion, Merge, Quick, and Tim sort.",
+        class: "mint",
+        description: "A comprehensive analysis of primary sorting routines, detailed step-by-step algorithms, memory layouts, stability conditions, and comparative metrics grids.",
+        syllabus: [
+          "Selection Sort, Bubble Sort (with early flag optimization), and Insertion Sort",
+          "Merge Sort (Divide & Conquer recurrence stack analysis)",
+          "Quick Sort (Lomuto partitioning scheme & pivot selection traps)",
+          "Heap Sort (Max-Heapify structures) and Radix Sort (LSD digit scanning)",
+          "Tim Sort, Counting Sort, stability comparisons grid"
+        ]
+      },
+      {
+        num: 8,
+        title: "ArrayList",
+        summary: "Dynamic array resizing rules, dynamic 2D setups, and memory boxing overheads.",
+        class: "lavender",
+        description: "Details the internals of Java's ArrayList class, explain how dynamic resizing works, and examines the performance costs of boxing/unboxing elements in standard Collections.",
+        syllabus: [
+          "Dynamic resizing mechanics (Load factor, copying elements, capacity growth)",
+          "ArrayList traversals, basic methods, and 2-D nested dynamic structures",
+          "Boxing and unboxing overheads (Memory size comparison: int vs Integer)",
+          "ConcurrentModificationException pitfalls and safe iterator removal patterns"
+        ]
+      },
+      {
+        num: 9,
+        title: "Array Problems — Medium Level",
+        summary: "Dutch National Flag, Boyer-Moore, Kadane's sliding window, and Next Permutation.",
+        class: "blue",
+        description: "Covers standard medium array patterns frequently asked in interviews. Analyzes partition algorithms, dynamic voting, sign alternation arrays, and lexicographical sequencing.",
+        syllabus: [
+          "Dutch National Flag Algorithm (Sorting 0s, 1s, 2s in single pass)",
+          "Boyer-Moore Voting Algorithm (Majority element search > n/2)",
+          "Kadane's Algorithm for Maximum Subarray Sum with index tracking",
+          "Sign alternation, Pascal's Triangle generation, 3-Sum/4-Sum skip-duplicate pointers",
+          "Next Permutation (Finding lexicographical step sequence)"
+        ]
+      },
+      {
+        num: 10,
+        title: "2-D Arrays (Matrices)",
+        summary: "Row-major storage, staircase search, diagonal summation, and clockwise rotations.",
+        class: "yellow",
+        description: "Explores multi-dimensional arrays, including how compilers flatten row-major matrix data in physical memory, matrix traversals, and in-place transformations.",
+        syllabus: [
+          "Row-major memory flattening layouts in 2D grids",
+          "Matrix traversals & main/anti-diagonal summation",
+          "Staircase Search on sorted row/column matrices (O(n + m) optimal bound)",
+          "In-place 90-degree matrix rotations (Clockwise / Counterclockwise)",
+          "Spiral printing algorithms (Boundary tracker loop constraints)"
+        ]
+      },
+      {
+        num: 11,
+        title: "Array Problems — Hard Level",
+        summary: "Merge sorted without space, count inversions, Trapping Rainwater, and repeating equations.",
+        class: "peach",
+        description: "Covers advanced array algorithmic patterns, utilizing gap sorting methods, prefix/suffix arrays, math systems, and binary sorting index tracks.",
+        syllabus: [
+          "In-place Sorted Array Merging (Gap method sorting optimization)",
+          "Maximum Product Subarray (Min/Max tracker dynamic programming)",
+          "Repeating & Missing number search (Math equation system vs XOR tracking)",
+          "Counting Array Inversions and Reverse Pairs (LeetCode 493)",
+          "Trapping Rainwater O(1) Space two-pointer solution vs Prefix Arrays"
+        ]
+      }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Render chapters grid
+      const grid = document.getElementById("chapters-grid");
+      if (grid) {
+        CHAPTERS_DATA.forEach(ch => {
+          const card = document.createElement("div");
+          card.className = `card chapter-card ${ch.class}`;
+          card.setAttribute("data-ch", ch.num);
+          card.innerHTML = `
+            <div class="chapter-number">CHAPTER ${ch.num}</div>
+            <h3 class="chapter-name">${ch.title}</h3>
+            <p class="chapter-summary">${ch.summary}</p>
+            <div class="chapter-interactive-hint">
+              <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> View Syllabus
+            </div>
+          `;
+          card.addEventListener("click", () => openDrawer(ch.num));
+          grid.appendChild(card);
+        });
+
+        // Add "More Coming Soon" card
+        const comingSoonCard = document.createElement("div");
+        comingSoonCard.className = "card chapter-card coming-soon-card lavender";
+        comingSoonCard.style.display = "flex";
+        comingSoonCard.style.flexDirection = "column";
+        comingSoonCard.style.justifyContent = "center";
+        comingSoonCard.style.alignItems = "center";
+        comingSoonCard.style.textAlign = "center";
+        comingSoonCard.style.minHeight = "220px";
+        comingSoonCard.style.borderStyle = "dashed";
+        comingSoonCard.style.opacity = "0.85";
+        comingSoonCard.style.cursor = "default";
+        
+        comingSoonCard.innerHTML = `
+          <div class="coming-soon-icon" style="width: 48px; height: 48px; border-radius: 50%; border: 3px solid var(--border-color); background-color: var(--neon-cyan); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 3px 3px 0 var(--border-color); color: var(--border-color);">
+            <i data-lucide="sparkles" style="width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px;">More Coming Soon</h3>
+          <p style="font-size: 0.8rem; color: #555; margin: 0 12px; line-height: 1.4;">New chapters and advanced algorithms are in development.</p>
+        `;
+        grid.appendChild(comingSoonCard);
+      }
+
+      // Initialize Lucide Icons
+      lucide.createIcons({
+        attrs: {
+          "stroke-width": 2.5,
+          "stroke": "currentColor"
+        }
+      });
+
+      // Bind Drawer Close elements
+      const overlay = document.getElementById("drawer-overlay");
+      const closeBtn = document.getElementById("drawer-close-btn");
+
+      overlay.addEventListener("click", closeDrawer);
+      closeBtn.addEventListener("click", closeDrawer);
+
+      // Bind Escape key to close drawer
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeDrawer();
+        }
+      });
+
+      function openDrawer(chNum) {
+        const ch = CHAPTERS_DATA.find(c => c.num === chNum);
+        if (!ch) return;
+
+        const overlay = document.getElementById("drawer-overlay");
+        const drawer = document.getElementById("drawer");
+        const numNode = document.getElementById("drawer-chapter-number");
+        const titleNode = document.getElementById("drawer-chapter-title");
+        const syllabusNode = document.getElementById("drawer-syllabus");
+        const descNode = document.getElementById("drawer-description");
+
+        // Populate drawer content
+        numNode.textContent = `CHAPTER ${ch.num}`;
+        titleNode.textContent = ch.title;
+        descNode.textContent = ch.description;
+
+        syllabusNode.innerHTML = "";
+        ch.syllabus.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          syllabusNode.appendChild(li);
+        });
+
+        // Show Drawer
+        overlay.classList.add("active");
+        drawer.classList.add("active");
+        document.body.style.overflow = "hidden"; // lock page scroll
+      }
+
+      function closeDrawer() {
+        document.getElementById("drawer-overlay").classList.remove("active");
+        document.getElementById("drawer").classList.remove("active");
+        document.body.style.overflow = ""; // restore scroll
+      }
+
+      // Scroll to Top Button auto-hide and functionality
+      const scrollTopBtn = document.getElementById("scroll-top-btn");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollTopBtn.classList.add("active");
+        } else {
+          scrollTopBtn.classList.remove("active");
+        }
+      });
+
+      scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+</body>
+</html>

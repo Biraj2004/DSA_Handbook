@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Handbook (Java Edition) — Premium Showcase</title>
+  <meta name="description" content="A structured, printable, and professional PDF knowledge base for Data Structures and Algorithms in Java. Crafted by Biraj.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'&gt;&lt;circle cx='12' cy='12' r='10.5' fill='%23FF007F' stroke='%231A1A1A' stroke-width='1.5'/&gt;&lt;g transform='translate(3.6, 3.6) scale(0.7)'&gt;&lt;path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;/g&gt;&lt;/svg&gt;">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Header & Navigation ────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <div class="logo-icon"><i data-lucide="book-open"></i></div>
+        <span>Biraj's Notes</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#hero">Overview</a></li>
+        <li class="nav-item"><a href="#pages">Page Preview</a></li>
+        <li class="nav-item"><a href="#curriculum">Curriculum</a></li>
+        <li class="nav-item"><a href="#visualizer">Playground</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/Biraj2004/DSA_Handbook" target="_blank" id="version-badge" class="badge neon-glow">
+            <i data-lucide="git-branch"></i> Fetching...
+          </a>
+        </li>
+      </ul>
+
+      <button class="hamburger" id="menu-btn" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav" id="mobile-menu">
+    <ul class="mobile-nav-links">
+      <li class="mobile-nav-item"><a href="#hero">Overview</a></li>
+      <li class="mobile-nav-item"><a href="#pages">Page Preview</a></li>
+      <li class="mobile-nav-item"><a href="#curriculum">Curriculum</a></li>
+      <li class="mobile-nav-item"><a href="#visualizer">Playground</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero Section ───────────────────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="container hero-layout">
+      
+      <!-- Hero Left: Info and Actions -->
+      <div class="hero-info">
+        <div class="hero-tag">
+          <i data-lucide="sparkles"></i>
+          <span>XeLaTeX Compiled • Java Edition</span>
+        </div>
+        
+        <h1 class="hero-title">
+          The Ultimate <br>
+          <span class="highlight">DSA Handbook</span>
+        </h1>
+        
+        <p class="hero-description">
+          A structured, printable, and professional PDF knowledge base for Data Structures &amp; Algorithms. Tailored for a shallow-to-medium depth learning journey. Complete with clean code, Dry Run tables, hand-drawn TikZ visual diagrams, and complexity analysis.
+        </p>
+
+        <div class="hero-meta">
+          <span class="badge"><i data-lucide="layers"></i> 11 Chapters</span>
+          <span class="badge"><i data-lucide="binary"></i> XeLaTeX</span>
+          <span class="badge" id="hero-page-count"><i data-lucide="file-text"></i> 153 Compiled Pages</span>
+          <span class="badge"><i data-lucide="check-circle-2"></i> Interview-Oriented</span>
+          <span class="badge"><i data-lucide="code"></i> Verified Code</span>
+          <span class="badge"><i data-lucide="printer"></i> A4 - Ready</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="https://github.com/Biraj2004/DSA_Handbook/releases" target="_blank" id="hero-download-btn" class="btn primary">
+            <i data-lucide="download"></i> Download Latest PDF
+          </a>
+          <a href="#pages" class="btn secondary">
+            <i data-lucide="eye"></i> Preview Pages
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Right: Interactive 3D Book Cover -->
+      <div class="book-container">
+        <div class="book-canvas">
+          <div class="book-spine"></div>
+          <div class="book-cover">
+            <div class="book-cover-content">
+              <div class="book-cover-category">Personal Study Handbook</div>
+              <h2 class="book-cover-title">DSA</h2>
+              <div class="book-cover-title-sub">Handbook</div>
+              <div class="book-cover-divider"></div>
+              <div class="book-cover-subtitle">From Fundamentals to 2-D Arrays</div>
+              
+              <!-- TikZ Array Representation mimic -->
+              <div class="book-cover-tikz">
+                <span>int[] arr = {10, 25, 7, 42, 18, 33, 5};</span>
+                <div class="book-cover-tikz-array">
+                  <div class="book-cover-tikz-cell">10</div>
+                  <div class="book-cover-tikz-cell">25</div>
+                  <div class="book-cover-tikz-cell">7</div>
+                  <div class="book-cover-tikz-cell">42</div>
+                  <div class="book-cover-tikz-cell">18</div>
+                  <div class="book-cover-tikz-cell">33</div>
+                  <div class="book-cover-tikz-cell">5</div>
+                </div>
+              </div>
+
+              <div class="book-cover-sources">
+                Based on: TakeUForward, Love Babbar, Apna College
+              </div>
+
+              <div class="book-cover-author-block">
+                <div>
+                  <div class="book-cover-author">Biraj</div>
+                  <div style="font-size: 0.55rem; opacity: 0.8;">Full-Stack Developer</div>
+                </div>
+                <div class="book-cover-details">
+                  <strong>Version 2.2.0</strong><br>
+                  153 Pages
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── GitHub Releases Version Tracker ────────────────────────────────────── -->
+  <section class="tracker-section">
+    <div class="container">
+      <div class="card tracker-card lavender">
+        <div class="tracker-info">
+          <div class="tracker-status-icon">
+            <i data-lucide="git-pull-request"></i>
+          </div>
+          <div class="tracker-text">
+            <h3>Release Tracker</h3>
+            <div class="tracker-meta-data">
+              <span><i data-lucide="tag"></i> Latest Tag: <strong id="tracker-version">v2.2.0 (Local)</strong></span>
+              <span><i data-lucide="calendar"></i> Released: <strong id="tracker-date">May 2026</strong></span>
+              <span><i data-lucide="package-open"></i> File Size: <strong id="tracker-size">883 KB</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="tracker-actions">
+          <a href="https://github.com/Biraj2004/DSA_Handbook/releases" target="_blank" id="tracker-download-btn" class="btn yellow">
+            <i data-lucide="github"></i> Get PDF from Releases
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Handbook Features Section ─────────────────────────────────────────── -->
+  <section class="curriculum" style="background-color: #fff; border-bottom: var(--border-width) solid var(--border-color); padding: 64px 0;" id="features">
+    <div class="container">
+      <div class="section-header" style="max-width: 700px; margin-bottom: 32px;">
+        <span class="section-pre">Core Architecture</span>
+        <h2 class="section-title" style="font-size: 2.5rem;">Engineered for High-Fidelity Learning</h2>
+        <p>A look at the structural decisions, formatting design parameters, and compilation criteria that define the handbook's visual clarity.</p>
+      </div>
+
+      <div class="grid-4">
+        <!-- Feature 1: Strict Structure -->
+        <div class="card peach" style="min-height: 200px;">
+          <div style="width: 40px; height: 40px; border-radius: 4px; border: 2px solid var(--border-color); background-color: var(--neon-yellow); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 2px 2px 0 var(--border-color);">
+            <i data-lucide="git-commit" style="width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.02em;">Strict Topic Flow</h3>
+          <p style="font-size: 0.85rem; color: #333; line-height: 1.5; margin-bottom: 0;">
+            Every core concept progresses logically: Conceptual explanation &rarr; Verified Java Code &rarr; dry run step trace table &rarr; vector TikZ memory map &rarr; time/space limits &rarr; interview pitfalls.
+          </p>
+        </div>
+
+        <!-- Feature 2: XeLaTeX Compiled -->
+        <div class="card mint" style="min-height: 200px;">
+          <div style="width: 40px; height: 40px; border-radius: 4px; border: 2px solid var(--border-color); background-color: var(--neon-cyan); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 2px 2px 0 var(--border-color);">
+            <i data-lucide="cpu" style="width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.02em;">XeLaTeX Compiled</h3>
+          <p style="font-size: 0.85rem; color: #333; line-height: 1.5; margin-bottom: 0;">
+            Leverages modern compiler engines for superior OpenType typography scaling (Pagella/Cursor) and textbook-grade mathematical equation formatting. Automatically builds synchronized TOC indexes.
+          </p>
+        </div>
+
+        <!-- Feature 3: Visual Design System -->
+        <div class="card lavender" style="min-height: 200px;">
+          <div style="width: 40px; height: 40px; border-radius: 4px; border: 2px solid var(--border-color); background-color: var(--neon-magenta); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 2px 2px 0 var(--border-color); color: #fff;">
+            <i data-lucide="palette" style="width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.02em;">Custom Design Rules</h3>
+          <p style="font-size: 0.85rem; color: #333; line-height: 1.5; margin-bottom: 0;">
+            Visual tcolorbox environments (definitionbox, dryrun, warningbox, tipbox, complexity, interviewcorner) are color-coded with exact border parameters, helping your brain segment technical concepts.
+          </p>
+        </div>
+
+        <!-- Feature 4: High-Fidelity Listings & Graphics -->
+        <div class="card yellow" style="min-height: 200px;">
+          <div style="width: 40px; height: 40px; border-radius: 4px; border: 2px solid var(--border-color); background-color: var(--neon-green); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 2px 2px 0 var(--border-color);">
+            <i data-lucide="image" style="width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.02em;">Vector Graphics & Code</h3>
+          <p style="font-size: 0.85rem; color: #333; line-height: 1.5; margin-bottom: 0;">
+            Features clean GitHub Light syntax highlighted listings (no dark background print eyestrain) and hand-crafted vector diagrams with strictly light tints to guarantee overlays remain highly legible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Interactive Handbook Page Reader ───────────────────────────────────── -->
+  <section class="reader" id="pages">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">Direct Renderer</span>
+        <h2 class="section-title">Handbook Pages Preview</h2>
+        <p>Browse through high-fidelity replicas of compiled pages. Recreated exactly from the XeLaTeX layout guidelines, highlighting color-coded tcolorbox definitions, tables, code listings, and TikZ visualizations.</p>
+      </div>
+
+      <div class="reader-container">
+        
+        <!-- Controls -->
+        <div class="reader-controls">
+          <span class="reader-page-indicator">
+            <i data-lucide="book-open-check"></i>
+            <span class="page-indicator-text">
+              <span class="page-indicator-count">PAGE <span id="page-num">1</span> OF 4</span><span class="page-indicator-divider"> — </span><span id="page-title" class="page-indicator-title">Book Cover</span>
+            </span>
+          </span>
+          <div class="reader-buttons">
+            <button class="btn secondary" id="prev-page-btn" aria-label="Previous Page">
+              <i data-lucide="chevron-left"></i> Prev
+            </button>
+            <button class="btn secondary" id="next-page-btn" aria-label="Next Page">
+              Next <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Viewport -->
+        <div class="book-page-viewport" id="page-viewport">
+          
+          <!-- Slide 1: Cover Page -->
+          <article class="book-page active" id="page-slide-1">
+            <!-- Full replicated title page -->
+            <div style="position: absolute; top:0; left:0; width:16px; height:100%; background-color: var(--latex-myred); border-right: 1px solid #000;"></div>
+            <div style="position: absolute; top:0; left:0; width:100%; height:16px; background-color: var(--latex-myred);"></div>
+            <div style="position: absolute; bottom:0; left:0; width:100%; height:16px; background-color: rgba(190,35,35,0.25);"></div>
+            
+            <div style="margin-left: 24px; padding-top: 40px; height: 100%; display: flex; flex-direction: column;">
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--latex-myred); letter-spacing: 0.1em; text-transform: uppercase;">
+                Personal Study Handbook &nbsp;&bull;&nbsp; Java Edition
+              </span>
+              <h1 style="font-size: 5rem; font-weight: 800; margin-top: 24px; margin-bottom: 0; line-height: 1;">DSA</h1>
+              <h2 style="font-size: 2.2rem; font-weight: 700; margin-top: 0; margin-bottom: 16px;">Handbook</h2>
+              <div style="width: 250px; height: 4px; background-color: var(--latex-myred); margin-bottom: 24px;"></div>
+              
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: #333; margin-bottom: 32px; font-family: var(--font-sans);">
+                From Fundamentals to 2-D Arrays
+              </h3>
+
+              <div style="display: flex; gap: 8px; margin-bottom: 64px;">
+                <span class="badge" style="border-color: var(--latex-myred); color: var(--latex-myred); background: rgba(190,35,35,0.08);">Beginner-Friendly</span>
+                <span class="badge" style="border-color: var(--latex-myred); color: var(--latex-myred); background: rgba(190,35,35,0.08);">Interview-Oriented</span>
+                <span class="badge" style="border-color: var(--latex-myred); color: var(--latex-myred); background: rgba(190,35,35,0.08);">Deeply Explained</span>
+              </div>
+
+              <!-- TikZ Array Visualisation -->
+              <div class="page-tikz-canvas">
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #555; margin-bottom: 8px; font-weight: 600;">
+                  int[] arr = {10, 25, 7, 42, 18, 33, 5};
+                </span>
+                <div style="display: flex; gap: 6px;">
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">10</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">25</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">7</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">42</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">18</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">33</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">5</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 6px; margin-top: 4px;">
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[0]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[1]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[2]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[3]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[4]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[5]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[6]</div>
+                </div>
+              </div>
+
+              <div style="margin-top: 32px; font-size: 0.85rem; color: #444; line-height: 1.8;">
+                Based on <strong>TakeUForward</strong> (Striver), <strong>Love Babbar</strong> &amp; <strong>APNA CLG DSA</strong> Series.<br>
+                <span style="color: var(--latex-mygray); font-size: 0.75rem;">&bull; w3schools.com &nbsp;&bull; geeksforgeeks.org &nbsp;&bull; codehelp.in &nbsp;&bull; apnacollege.in</span>
+              </div>
+
+              <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #ddd; padding-top: 16px;">
+                <div>
+                  <h4 style="font-size: 1.5rem; font-family: var(--font-sans); font-weight: 700; margin: 0;">Biraj</h4>
+                  <span style="font-size: 0.8rem; color: #666;">ECE Student &middot; Full-Stack Developer</span>
+                </div>
+                <div style="text-align: right; font-size: 0.8rem; color: #666; line-height: 1.4;">
+                  <strong>Version <span id="cover-version">2.2.0</span></strong><br>
+                  <span id="cover-pub-date">May 2026</span> &bull; <span id="cover-page-count">153</span> Pages
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 2: Table of Contents & How to Use -->
+          <article class="book-page" id="page-slide-2">
+            <div class="book-page-header">
+              <span>DSA Handbook — Java Edition</span>
+              <span>How to Use This Handbook</span>
+            </div>
+
+            <div class="latex-h1">How to Use This Handbook</div>
+            <p class="latex-body">
+              This handbook is your structured companion for learning Data Structures &amp; Algorithms in Java — from the very first concept to mastering 2-D Arrays. It is written to be <strong>shallow-to-medium depth</strong>: clear enough to understand quickly, deep enough to perform in interviews.
+            </p>
+
+            <div class="tcb-box tcb-def">
+              <div class="tcb-box-title">Structure of Each Topic</div>
+              <div class="tcb-content">
+                <ol>
+                  <li><strong>Concept</strong> — What it is, explained in plain English.</li>
+                  <li><strong>Java Code</strong> — Clean implementation (no step-jumps; every line explained).</li>
+                  <li><strong>Dry Run</strong> — Step-by-step table trace on a small example.</li>
+                  <li><strong>Visual Diagram</strong> — Color-coded TikZ diagrams mapping out memory layouts, pointer swaps, and math geometries.</li>
+                  <li><strong>Complexity</strong> — Time and Space Big-O analysis.</li>
+                  <li><strong>Interview Corner</strong> — What interviewers ask, edge cases, and pitfalls.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="tcb-box tcb-warn">
+              <div class="tcb-box-title">Visual Code Colors Guide</div>
+              <div class="tcb-content">
+                To maintain high-quality aesthetics, the handbook utilizes specific color-coded layouts:
+                <ul>
+                  <li><strong>Blue Box (Definition)</strong> — Core definition / concept guidelines.</li>
+                  <li><strong>Orange Box (Dry Run / Warning)</strong> — Step-by-step trace tables and compilation warnings.</li>
+                  <li><strong>Indigo Box (Complexity)</strong> — Time and Space Big-O limits.</li>
+                  <li><strong>Red Box (Interview Corner)</strong> — Interview questions and common bugs.</li>
+                  <li><strong>Green Box (Tip)</strong> — Shortcuts, math tips, and editor hacks.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="book-page-footer">
+              <span class="book-page-watermark">© Biraj's Notes</span>
+              <span>2</span>
+            </div>
+          </article>
+
+          <!-- Slide 3: Chapter 2 Page -->
+          <article class="book-page" id="page-slide-3">
+            <div class="book-page-header">
+              <span>Chapter 2 &bull; Java Language Basics</span>
+              <span>Variables and Data Types</span>
+            </div>
+
+            <span class="latex-chapter-label">Chapter 2</span>
+            <div class="latex-h1">Java Language Basics</div>
+            
+            <div class="latex-h2">Java's Eight Primitive Types</div>
+            <p class="latex-body">
+              A variable is a named slot in memory. In Java, primitives are stored directly in stack memory, whereas objects/classes (like Strings) are references pointing to heap memory.
+            </p>
+
+            <!-- Primitives Table -->
+            <table class="latex-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Size</th>
+                  <th>Value Range (approx)</th>
+                  <th>Default</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>byte</code></td>
+                  <td>1 byte</td>
+                  <td>-128 to 127</td>
+                  <td><code>0</code></td>
+                  <td><code>byte b = 100;</code></td>
+                </tr>
+                <tr>
+                  <td><code>int</code></td>
+                  <td>4 bytes</td>
+                  <td>&approx; -2.1B to +2.1B</td>
+                  <td><code>0</code></td>
+                  <td><code>int n = 42;</code></td>
+                </tr>
+                <tr>
+                  <td><code>long</code></td>
+                  <td>8 bytes</td>
+                  <td>&approx; &plusmn;9.2 &times; 10<sup>18</sup></td>
+                  <td><code>0L</code></td>
+                  <td><code>long l = 99L;</code></td>
+                </tr>
+                <tr>
+                  <td><code>double</code></td>
+                  <td>8 bytes</td>
+                  <td>&approx; &plusmn;1.7 &times; 10<sup>308</sup></td>
+                  <td><code>0.0</code></td>
+                  <td><code>double d = 3.14;</code></td>
+                </tr>
+                <tr>
+                  <td><code>boolean</code></td>
+                  <td>1 bit</td>
+                  <td>true / false</td>
+                  <td><code>false</code></td>
+                  <td><code>boolean ok = true;</code></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="tcb-box tcb-warn">
+              <div class="tcb-box-title">nextInt() + nextLine() Buffer Trap</div>
+              <div class="tcb-content">
+                After calling <code>sc.nextInt()</code>, the newline character <code>'\n'</code> remains in the buffer. An immediate call to <code>sc.nextLine()</code> will consume that leftover newline and return an empty string. <strong>Fix:</strong> Insert an extra <code>sc.nextLine()</code> to clear the buffer.
+              </div>
+            </div>
+
+            <!-- Java Code Block with GitHub Light syntax highlighting -->
+            <div class="code-container">
+              <div class="code-listing"><div class="code-line"><span class="code-ln">1</span><span class="code-txt"><span class="code-keyword">import</span> java.util.Scanner;</span></div><div class="code-line"><span class="code-ln">2</span><span class="code-txt"><span class="code-keyword">public class</span> InputDemo {</span></div><div class="code-line"><span class="code-ln">3</span><span class="code-txt">    <span class="code-keyword">public static void</span> main(String[] args) {</span></div><div class="code-line"><span class="code-ln">4</span><span class="code-txt">        Scanner sc = <span class="code-keyword">new</span> Scanner(System.in);</span></div><div class="code-line"><span class="code-ln">5</span><span class="code-txt">        System.out.print(<span class="code-string">"Enter age: "</span>);</span></div><div class="code-line"><span class="code-ln">6</span><span class="code-txt">        <span class="code-keyword">int</span> age = sc.nextInt(); <span class="code-comment">// leaves newline in buffer</span></span></div><div class="code-line"><span class="code-ln">7</span><span class="code-txt">        sc.nextLine();          <span class="code-comment">// consume buffer newline</span></span></div><div class="code-line"><span class="code-ln">8</span><span class="code-txt">        System.out.print(<span class="code-string">"Enter name: "</span>);</span></div><div class="code-line"><span class="code-ln">9</span><span class="code-txt">        String name = sc.nextLine();</span></div><div class="code-line"><span class="code-ln">10</span><span class="code-txt">        sc.close();</span></div><div class="code-line"><span class="code-ln">11</span><span class="code-txt">    }</span></div><div class="code-line"><span class="code-ln">12</span><span class="code-txt">}</span></div></div>
+            </div>
+
+            <div class="book-page-footer">
+              <span class="book-page-watermark">© Biraj's Notes</span>
+              <span>17</span>
+            </div>
+          </article>
+
+          <!-- Slide 4: Chapter 5 Page -->
+          <article class="book-page" id="page-slide-4">
+            <div class="book-page-header">
+              <span>Chapter 5 &bull; 1-D Arrays</span>
+              <span>Optimal Array Scanning</span>
+            </div>
+
+            <span class="latex-chapter-label">Chapter 5</span>
+            <div class="latex-h1">1-D Arrays</div>
+            
+            <div class="latex-h2">Optimal Two-Pointer Zero Movement</div>
+            <p class="latex-body">
+              <strong>Problem:</strong> Given an array, move all 0s to the end of it while maintaining the relative order of non-zero elements. Must be done in-place.
+            </p>
+
+            <!-- TikZ Diagram showing pointers -->
+            <div class="page-tikz-canvas">
+              <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;">Visualizing Swap State</span>
+              
+              <!-- Pointers Row -->
+              <div style="display: flex; gap: 8px; justify-content: center; width: 100%; margin-bottom: 4px;">
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myorange); font-weight: bold; min-height: 18px;">j &darr;</div>
+                <div style="width: 44px; min-height: 18px;"></div>
+                <div style="width: 44px; min-height: 18px;"></div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygreen); font-weight: bold; min-height: 18px;">i &darr;</div>
+                <div style="width: 44px; min-height: 18px;"></div>
+              </div>
+
+              <!-- Simulated TikZ box alignment -->
+              <div style="display: flex; gap: 8px; align-items: center; justify-content: center; width: 100%;">
+                <!-- Array Cell [0] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: var(--latex-warnbg); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">0</div>
+                <!-- Array Cell [1] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: #eee; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">1</div>
+                <!-- Array Cell [2] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: #eee; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">0</div>
+                <!-- Array Cell [3] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: var(--latex-tipbg); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">3</div>
+                <!-- Array Cell [4] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: #eee; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">12</div>
+              </div>
+
+              <!-- Indices Row -->
+              <div style="display: flex; gap: 8px; justify-content: center; width: 100%; margin-top: 4px;">
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[0]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygray); font-weight: 700;">[1]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygray); font-weight: 700;">[2]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[3]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygray); font-weight: 700;">[4]</div>
+              </div>
+
+              <!-- Swap action SVG curve -->
+              <div style="display: flex; flex-direction: column; align-items: center; margin-top: 8px;">
+                <svg width="156" height="24" viewBox="0 0 156 24" fill="none" style="overflow: visible;">
+                  <path d="M 22,2 C 22,22 134,22 134,2" stroke="var(--latex-myred)" stroke-width="2" stroke-dasharray="4,4" fill="none" />
+                  <path d="M 22,2 L 18,10 M 22,2 L 26,10" stroke="var(--latex-myred)" stroke-width="1.5" fill="none" />
+                  <path d="M 134,2 L 130,10 M 134,2 L 138,10" stroke="var(--latex-myred)" stroke-width="1.5" fill="none" />
+                </svg>
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--latex-myred); font-weight: bold; margin-top: 2px;">SWAP(i, j)</span>
+              </div>
+
+              <!-- Legend Description -->
+              <div style="font-family: var(--font-sans); font-size: 0.75rem; color: #555; margin-top: 12px; border-top: 1px solid #eee; padding-top: 6px; width: 100%; text-align: center;">
+                <span style="color: var(--latex-myorange); font-weight: bold;">j pointer:</span> first zero index &nbsp;|&nbsp; 
+                <span style="color: var(--latex-mygreen); font-weight: bold;">i pointer:</span> current scanning non-zero item
+              </div>
+            </div>
+
+            <div class="tcb-box tcb-int">
+              <div class="tcb-box-title">Interview Corner: Two-Pointer Optimal Strategy</div>
+              <div class="tcb-content">
+                A naive solution uses an auxiliary array of size <i>n</i>, copying non-zero items first. Space: O(n).<br>
+                The optimal approach runs in <strong>O(n) Time</strong> and <strong>O(1) Auxiliary Space</strong>:
+                <ol>
+                  <li>Find the first <code>0</code> element at index <code>j</code>.</li>
+                  <li>Scan with pointer <code>i = j + 1</code>. Whenever <code>arr[i] != 0</code>, swap <code>arr[i]</code> with <code>arr[j]</code> and increment <code>j</code>.</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- Java Code Block -->
+            <div class="code-container">
+              <div class="code-listing"><div class="code-line"><span class="code-ln">1</span><span class="code-txt"><span class="code-keyword">public void</span> moveZeroes(<span class="code-keyword">int</span>[] nums) {</span></div><div class="code-line"><span class="code-ln">2</span><span class="code-txt">    <span class="code-keyword">int</span> j = -1;</span></div><div class="code-line"><span class="code-ln">3</span><span class="code-txt">    <span class="code-comment">// find first zero</span></span></div><div class="code-line"><span class="code-ln">4</span><span class="code-txt">    <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = 0; i &lt; nums.length; i++) {</span></div><div class="code-line"><span class="code-ln">5</span><span class="code-txt">        <span class="code-keyword">if</span> (nums[i] == 0) { j = i; <span class="code-keyword">break</span>; }</span></div><div class="code-line"><span class="code-ln">6</span><span class="code-txt">    }</span></div><div class="code-line"><span class="code-ln">7</span><span class="code-txt">    <span class="code-keyword">if</span> (j == -1) <span class="code-keyword">return</span>; <span class="code-comment">// no zeroes</span></span></div><div class="code-line"><span class="code-ln">8</span><span class="code-txt">    <span class="code-comment">// swap non-zero elements into zero slots</span></span></div><div class="code-line"><span class="code-ln">9</span><span class="code-txt">    <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = j + 1; i &lt; nums.length; i++) {</span></div><div class="code-line"><span class="code-ln">10</span><span class="code-txt">        <span class="code-keyword">if</span> (nums[i] != 0) {</span></div><div class="code-line"><span class="code-ln">11</span><span class="code-txt">            <span class="code-keyword">int</span> temp = nums[i]; nums[i] = nums[j]; nums[j] = temp;</span></div><div class="code-line"><span class="code-ln">12</span><span class="code-txt">            j++;</span></div><div class="code-line"><span class="code-ln">13</span><span class="code-txt">        }</span></div><div class="code-line"><span class="code-ln">14</span><span class="code-txt">    }</span></div><div class="code-line"><span class="code-ln">15</span><span class="code-txt">}</span></div></div>
+            </div>
+
+            <div class="book-page-footer">
+              <span class="book-page-watermark">© Biraj's Notes</span>
+              <span>54</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Curriculum Grid Section ────────────────────────────────────────────── -->
+  <section class="curriculum" id="curriculum">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">Syllabus Overview</span>
+        <h2 class="section-title">Chapters 1 to 11</h2>
+        <p>A sequential walkthrough mapping essential concepts. Tap any card below to expand full curriculum subsections and see standard listings covered.</p>
+      </div>
+
+      <div class="grid-3" id="chapters-grid">
+        <!-- Cards will be populated dynamically via JavaScript to ensure data fidelity -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter Syllabus Overlay Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-header">
+      <div class="drawer-title-block">
+        <span id="drawer-chapter-number">CHAPTER 1</span>
+        <h3 id="drawer-chapter-title">Fundamentals of Programming</h3>
+      </div>
+      <button class="drawer-close" id="drawer-close-btn" aria-label="Close details">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <h4 style="font-family: var(--font-sans); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--latex-myred); margin-bottom: 16px;">
+        Curriculum Roadmap
+      </h4>
+      <ul class="drawer-syllabus-list" id="drawer-syllabus">
+        <!-- List items populated dynamically -->
+      </ul>
+
+      <h4 style="font-family: var(--font-sans); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--latex-myblue); margin-bottom: 16px;">
+        Chapter Snapshot
+      </h4>
+      <p id="drawer-description" class="latex-body" style="font-family: var(--font-sans); line-height: 1.6; font-size: 0.95rem; color: #333;">
+        Detailed information will appear here.
+      </p>
+    </div>
+  </aside>
+
+  <!-- ── Interactive Playground Section ─────────────────────────────────────── -->
+  <section class="playground" id="visualizer">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">Interactive Labs</span>
+        <h2 class="section-title">Developer Playground</h2>
+        <p>Interactive tools designed to demonstrate complexity growth rates, array sorting behaviors, and compiling procedures in real-time.</p>
+      </div>
+
+      <div class="playground-grid">
+        
+        <!-- Left Side: Sorting Visualizer (Neo-Brutalism Style) -->
+        <div class="visualizer-container">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-family: var(--font-sans); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+              <i data-lucide="bar-chart-3"></i> Sorting Visualizer
+            </h3>
+            <span class="badge neon-glow" id="visualizer-algo-badge">Selection Sort</span>
+          </div>
+
+          <div class="visualizer-screen" id="visualizer-bars-screen">
+            <!-- Visualizer Bars render dynamically -->
+          </div>
+
+          <div class="visualizer-controls-panel">
+            <button class="btn primary" id="algo-run-btn" title="Shortcut: Space">
+              <i data-lucide="play" id="algo-run-icon"></i> <span id="algo-run-text">Run</span>
+            </button>
+            <button class="btn secondary" id="algo-step-btn" title="Shortcut: S">
+              <i data-lucide="skip-forward"></i> Step
+            </button>
+            <button class="btn yellow" id="algo-reset-btn" title="Shortcut: R">
+              <i data-lucide="refresh-cw"></i> Randomize
+            </button>
+            
+            <select id="algo-select" class="btn" style="background-color: #fff; text-transform: none; padding: 12px 16px;">
+              <option value="selection">Selection Sort</option>
+              <option value="bubble">Bubble Sort</option>
+            </select>
+          </div>
+
+          <div class="visualizer-status" id="visualizer-log">
+            Status: Ready. Press "Run" or "Step" to begin.
+          </div>
+        </div>
+
+        <!-- Right Side: SVG Big-O Graph Explorer -->
+        <div class="graph-container">
+          <h3 style="font-family: var(--font-sans); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+            <i data-lucide="activity"></i> Big-O Curve Explorer
+          </h3>
+          
+          <svg class="graph-svg" id="bigo-svg" viewBox="0 0 500 250">
+            <!-- Grid Lines -->
+            <line x1="30" y1="60" x2="480" y2="60" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="30" y1="110" x2="480" y2="110" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="30" y1="160" x2="480" y2="160" stroke="#f5f5f5" stroke-width="1"/>
+            
+            <line x1="120" y1="20" x2="120" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="210" y1="20" x2="210" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="300" y1="20" x2="300" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="390" y1="20" x2="390" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+
+            <!-- O(1) Constant (Green) -->
+            <path id="path-o1" class="graph-line graph-line-o1" d="M 30,200 L 480,200" />
+            <!-- O(log n) Logarithmic (Teal) -->
+            <path id="path-ologn" class="graph-line graph-line-ologn" d="M 30,220 Q 150,170 480,150" />
+            <!-- O(n) Linear (Blue) -->
+            <path id="path-on" class="graph-line graph-line-on" d="M 30,220 L 480,70" />
+            <!-- O(n log n) Linearithmic (Orange) -->
+            <path id="path-onlogn" class="graph-line graph-line-onlogn" d="M 30,220 Q 250,140 480,25" />
+            <!-- O(n^2) Quadratic (Red) -->
+            <path id="path-on2" class="graph-line graph-line-on2" d="M 30,220 Q 110,180 180,20" />
+          </svg>
+
+          <div class="graph-legend">
+            <div class="legend-item active" id="legend-o1" data-curve="o1">
+              <div class="legend-color legend-o1"></div>
+              <span>O(1) Constant</span>
+            </div>
+            <div class="legend-item active" id="legend-ologn" data-curve="ologn">
+              <div class="legend-color legend-ologn"></div>
+              <span>O(log n) Logarithmic</span>
+            </div>
+            <div class="legend-item active" id="legend-on" data-curve="on">
+              <div class="legend-color legend-on"></div>
+              <span>O(n) Linear</span>
+            </div>
+            <div class="legend-item active" id="legend-onlogn" data-curve="onlogn">
+              <div class="legend-color legend-onlogn"></div>
+              <span>O(n log n)</span>
+            </div>
+            <div class="legend-item active" id="legend-on2" data-curve="on2">
+              <div class="legend-color legend-on2"></div>
+              <span>O(n²) Quadratic</span>
+            </div>
+          </div>
+
+          <div class="graph-explanation" id="graph-expl-text">
+            Hover over a curve or legend tag above to analyze its time complexity scaling, search bounds, and sample array operations.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Editorial Row: Build Automation Terminal -->
+      <div class="editorial-row">
+        <div>
+          <h3 style="font-family: var(--font-sans); font-weight: 800; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
+            <i data-lucide="terminal"></i> Compiler Terminal Simulator
+          </h3>
+          <p>
+            The DSA Handbook is compiled using <strong>XeLaTeX</strong> to enable OpenType font structures and premium math notations. Compiling runs the XeLaTeX parser twice to resolve TOC index structures, dynamic math bookmarks, and page counting before cleaning up auxiliary files automatically.
+          </p>
+          <p>
+            Trigger the build automation script simulator on the right to see the compilation workflow execute line-by-line in real-time.
+          </p>
+          <button class="btn magenta" id="terminal-run-btn">
+            <i data-lucide="play-circle"></i> Run build_handbook.ps1
+          </button>
+        </div>
+
+        <div class="terminal-container">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+            </div>
+            <span>PowerShell Core</span>
+          </div>
+          <div class="terminal-body" id="terminal-screen">
+            <div class="terminal-line terminal-input">PS C:\Users\biraj\Desktop\DSA_Handbook> _</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Developer HUD HUD Stats Panel ────────────────────────────────────── -->
+  <div class="dev-hud">
+    <div class="dev-hud-panel" id="dev-hud-panel">
+      <div class="dev-hud-header">
+        <span>Dev Dashboard</span>
+        <span style="color: var(--neon-magenta);">v2.2.0</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>DOM Nodes:</span>
+        <span class="dev-hud-val" id="dev-dom-count">0</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>Load Time:</span>
+        <span class="dev-hud-val" id="dev-load-time">0 ms</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>XeLaTeX RAM:</span>
+        <span class="dev-hud-val" style="color: var(--latex-myteal);">~168 MB</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>Source:</span>
+        <span class="dev-hud-val" id="dev-api-status" style="color: var(--latex-mygreen);">API Checked</span>
+      </div>
+      <div style="font-size: 0.65rem; border-top: 1px solid #ddd; padding-top: 6px; color:#666; text-align: center;">
+        Press <strong class="kbd-key" style="box-shadow:none; padding:1px 4px;">?</strong> to view keyboard shortcuts
+      </div>
+    </div>
+    <button class="dev-hud-trigger" id="dev-hud-btn" title="Toggle Dashboard">
+      <i data-lucide="sliders"></i>
+    </button>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div class="drawer-overlay" id="kbd-overlay"></div>
+  <div class="kbd-modal" id="kbd-modal">
+    <div class="kbd-modal-header">
+      <i data-lucide="keyboard" style="vertical-align: middle; margin-right: 6px;"></i> Shortcut Commands
+    </div>
+    <div class="kbd-list">
+      <div class="kbd-item">
+        <span>Toggle Dashboard HUD</span>
+        <kbd class="kbd-key">D</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Close any Modal/Drawer</span>
+        <kbd class="kbd-key">Esc</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Next Preview Page</span>
+        <kbd class="kbd-key">&rarr;</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Prev Preview Page</span>
+        <kbd class="kbd-key">&larr;</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Play/Pause Sort Visualizer</span>
+        <kbd class="kbd-key">Space</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Step Sort Visualizer</span>
+        <kbd class="kbd-key">S</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Randomize Visualizer Array</span>
+        <kbd class="kbd-key">R</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Show/Hide Shortcuts Guide</span>
+        <kbd class="kbd-key">?</kbd>
+      </div>
+    </div>
+    <button class="btn secondary" id="kbd-close-btn" style="width: 100%; margin-top: 20px; justify-content: center;">
+      Dismiss
+    </button>
+  </div>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo">DSA <span>Handbook</span></div>
+        <p class="footer-text">
+          A modern study textbook covering basic to advanced concepts in Java.
+        </p>
+        <p class="footer-text">
+          Designed and compiled by <strong>Biraj</strong>.
+        </p>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Handbook Specs</h4>
+        <ul>
+          <li><a href="#hero">Overview &amp; Features</a></li>
+          <li><a href="#pages">Page Preview Reader</a></li>
+          <li><a href="#curriculum">Chapter Roadmap</a></li>
+          <li><a href="#visualizer">Compiler Logs Console</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Downloads</h4>
+        <ul>
+          <li><a href="https://github.com/Biraj2004/DSA_Handbook/releases" target="_blank" id="footer-dl-btn">Direct PDF Link</a></li>
+          <li><a href="https://github.com/Biraj2004/DSA_Handbook" target="_blank">GitHub Repository</a></li>
+          <li><a href="https://github.com/Biraj2004/DSA_Handbook/releases" target="_blank">Releases Archive</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>&copy; 2026 Biraj's Notes. All rights reserved.</span>
+      <span>
+        Made for ECE &amp; Software Engineers &nbsp;|&nbsp; 
+        <a href="https://github.com/Biraj2004" target="_blank">github.com/Biraj2004</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ────────────────────────────────────────────────────────────── -->
+  <!-- Lucide Icon Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Main Logic Script -->
+  <script src="script.js"></script>
+</body>
+</html>
