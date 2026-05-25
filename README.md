@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10.5' fill='%23FF007F' stroke='%231A1A1A' stroke-width='1.5'/%3E%3Cg transform='translate(3.6, 3.6) scale(0.7)'%3E%3Cpath d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E" width="80" height="80" alt="DSA Handbook Logo">
+  <img src="docs/logo.svg" width="80" height="80" alt="DSA Handbook Logo">
 </p>
 
 <h1 align="center">DSA Handbook (Java Edition)</h1>
