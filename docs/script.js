@@ -314,20 +314,19 @@ async function fetchReleaseInfo() {
   const FALLBACK_DATE = "May 2026";
   const FALLBACK_SIZE = "883 KB";
   const FALLBACK_PAGES = "153";
-  // The local relative path is preferred for local download, otherwise GitHub Release URL
-  const LOCAL_PDF_PATH = "v2/DSA_Handbook_CH_1-11.pdf";
+  const GITHUB_PDF_URL = "https://github.com/Biraj2004/DSA_Handbook/releases/download/v2.2.0/DSA_Handbook_CH_1-11.pdf";
   const GITHUB_RELEASE_PAGE = "https://github.com/Biraj2004/DSA_Handbook/releases";
 
   // Helper to set UI to values
-  const setReleaseUI = (tag, date, size, downloadUrl, pageCount) => {
+  const setReleaseUI = (tag, date, size, pdfUrl, pageCount) => {
     badge.innerHTML = `<i data-lucide="git-branch"></i> ${tag}`;
     trackerVersion.textContent = tag;
     trackerDate.textContent = date;
     trackerSize.textContent = size;
     
-    heroDlBtn.href = downloadUrl;
-    trackerDlBtn.href = downloadUrl;
-    footerDlBtn.href = downloadUrl;
+    heroDlBtn.href = pdfUrl;
+    trackerDlBtn.href = GITHUB_RELEASE_PAGE;
+    footerDlBtn.href = pdfUrl;
     
     // Update cover details and hero badge
     const coverVersion = document.getElementById("cover-version");
@@ -366,25 +365,15 @@ async function fetchReleaseInfo() {
       dateStr = `${months[pubDate.getMonth()]} ${pubDate.getFullYear()}`;
     }
 
-    // Find PDF asset
+    // Find PDF asset (size metadata only; direct download uses repo PDF on main)
     let sizeStr = FALLBACK_SIZE;
-    let downloadUrl = GITHUB_RELEASE_PAGE;
+    const pdfUrl = GITHUB_PDF_URL;
     
     if (data.assets && data.assets.length > 0) {
       const pdfAsset = data.assets.find(asset => asset.name.toLowerCase().endsWith(".pdf"));
-      if (pdfAsset) {
-        downloadUrl = pdfAsset.browser_download_url;
-        // Format size
-        const bytes = pdfAsset.size;
-        if (bytes) {
-          sizeStr = `${Math.round(bytes / 1024)} KB`;
-        }
-      } else {
-        // Use default asset url
-        downloadUrl = data.assets[0].browser_download_url || GITHUB_RELEASE_PAGE;
+      if (pdfAsset && pdfAsset.size) {
+        sizeStr = `${Math.round(pdfAsset.size / 1024)} KB`;
       }
-    } else {
-      downloadUrl = data.html_url || GITHUB_RELEASE_PAGE;
     }
 
     // Parse page count from release notes description (body)
@@ -396,15 +385,13 @@ async function fetchReleaseInfo() {
       }
     }
 
-    setReleaseUI(tag, dateStr, sizeStr, downloadUrl, pageCount);
+    setReleaseUI(tag, dateStr, sizeStr, pdfUrl, pageCount);
     apiStatus.textContent = "API Synced";
     apiStatus.style.color = "var(--latex-mygreen)";
   } catch (error) {
     console.warn("GitHub API error, using local fallback state: ", error.message);
     
-    // Check if we are running locally and if local PDF exists (graceful default)
-    // We bind download links to local PDF path, if not found browser will handle it or fall back to github page
-    setReleaseUI(`${FALLBACK_TAG} (Local)`, FALLBACK_DATE, FALLBACK_SIZE, LOCAL_PDF_PATH, FALLBACK_PAGES);
+    setReleaseUI(`${FALLBACK_TAG} (Local)`, FALLBACK_DATE, FALLBACK_SIZE, GITHUB_PDF_URL, FALLBACK_PAGES);
     apiStatus.textContent = "Local Fallback";
     apiStatus.style.color = "var(--latex-myorange)";
   }
