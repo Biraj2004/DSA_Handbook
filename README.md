@@ -30,9 +30,9 @@ DSA_Handbook/
 │
 ├── v2/                                     # Version 2 (Optimized layouts, corrected math, TikZ diagrams)
 │   ├── DSA_Handbook_CH_1-11.tex            # Main LaTeX source code (v2.2.0)
-│   └── DSA_Handbook_CH_1-11.pdf            # Compiled handbook PDF (146 pages)
+│   └── DSA_Handbook_CH_1-11.pdf            # Compiled handbook PDF (153 pages)
 │
-├── build_handbook.ps1                       # Automated build script (handles compilation and cleanup)
+├── build_handbook.ps1                      # Automated build script (handles compilation and cleanup)
 └── README.md                               # Project documentation & reference manual (this file)
 ```
 
@@ -64,8 +64,8 @@ The handbook compiles Chapters 1 to 11, moving systematically from language fund
 5. **Chapter 5: 1-D Arrays**
    * Array memory storage rules (contiguous slots, reference pointers).
    * Accessing elements, linear search, finding maximum/minimum, and checking if sorted.
-   * Operations: Reverse (in-place), left rotation (by 1 and by $k$), max consecutive ones, moving zeros.
-   * Hashing/Two-Pointer problems: Two Sum, Union & Intersection of sorted arrays, finding the missing number, and identifying array leaders.
+   * Operations: Reverse (in-place), left rotation (by 1 and by $k$), max consecutive ones, and moving zeros (Naive using temporary array vs. Optimal in-place two-pointer).
+   * Hashing/Two-Pointer problems: Two Sum (Brute force vs. Two-Pointer index lookup vs. Optimal HashMap), Union & Intersection of sorted arrays, finding the missing number, and identifying array leaders (Naive nested loops vs. Optimal right-to-left scan).
 6. **Chapter 6: Array Problems — Interview Revision**
    * Quick-reference complexity tables, core strategies recap, and common edge cases (empty, single item, overflow).
 7. **Chapter 7: Sorting Algorithms**
@@ -86,8 +86,10 @@ The handbook compiles Chapters 1 to 11, moving systematically from language fund
     * Staircase search on row/column-sorted matrices.
     * Transposing matrices, in-place 90° rotations (clockwise and counterclockwise), and spiral printing.
 11. **Chapter 11: Array Problems — Hard Level**
-    * In-place sorted array merging (Shell sort / Gap method).
-    * Maximum product subarray, counting inversions using Merge Sort, and reverse pairs (LeetCode 493).
+    * In-place sorted array merging: Merge Two Sorted Arrays Without Extra Space (Naive auxiliary array sort vs. Intermediate inline insertion sort vs. Optimal Gap method).
+    * Maximum Product Subarray (Naive nested loop brute force vs. Optimal track min/max dynamic programming).
+    * Find the Repeating and Missing Number (Naive frequency array vs. Optimal Math equation system).
+    * Counting inversions using Merge Sort, and reverse pairs (LeetCode 493).
     * Trapping Rainwater (prefix-array vs. optimal two-pointer $O(1)$ space).
     * Stock buy-and-sell optimization.
 

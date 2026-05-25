@@ -364,7 +364,8 @@
   \hfill
   \begin{minipage}{0.40\textwidth}\raggedleft
     {\normalsize\bfseries\color{black} Version 2.2.0}\\[4pt]
-    {\normalsize\color{black!65} May 2026}
+    {\normalsize\color{black!65} May 2026}\\[4pt]
+    {\normalsize\color{black!65} 153 Pages}
   \end{minipage}
 
   \vspace{0.6cm}
@@ -2850,6 +2851,48 @@ Time: $O(n)$\quad Space: $O(1)$
 
 \textbf{Problem:} Move all zeros to the end while preserving the \textbf{relative order} of non-zero elements.
 
+\subsection{Approach 1: Naive (Temporary Array)}
+The simplest way to solve this is to use a temporary array. We traverse the original array to find all non-zero elements and copy them to the temporary array one by one. Once all non-zeros are placed at the beginning, we fill the remaining slots of the temporary array with zeros. Finally, we copy the elements from the temporary array back into the original array.
+
+\begin{lstlisting}[caption={Move Zeros to End --- Naive approach using Temporary Array, O(n) time O(n) space}]
+public class MoveZerosNaive {
+    public static void moveZeros(int[] arr) {
+        int n = arr.length;
+        int[] temp = new int[n];
+        int j = 0;
+
+        // Copy all non-zero elements to temp
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != 0) {
+                temp[j] = arr[i];
+                j++;
+            }
+        }
+
+        // Remaining positions in temp are already 0 (default JVM initialization)
+        // Copy elements back to the original array
+        for (int i = 0; i < n; i++) {
+            arr[i] = temp[i];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {0, 1, 0, 3, 12};
+        moveZeros(arr);
+        for (int x : arr) System.out.print(x + " ");
+        // Output: 1 3 12 0 0
+    }
+}
+\end{lstlisting}
+
+\begin{complexity}
+Time: $O(n)$ since we iterate through the array twice.\\
+Space: $O(n)$ as we require an auxiliary array of size $n$ to hold elements.
+\end{complexity}
+
+\subsection{Approach 2: Optimal (In-Place Two Pointer)}
+We can solve this problem in-place without using any auxiliary space. We maintain a pointer \texttt{j} which tracks the position where the next non-zero element should be placed. During the first pass, we iterate through the array: whenever we find a non-zero element, we place it at index \texttt{j} and increment \texttt{j}. During the second pass, we fill all positions from index \texttt{j} to the end of the array with zeros.
+
 \begin{center}
 \begin{tikzpicture}[font=\small]
   % Step 1: Copy non-zeros
@@ -2931,7 +2974,8 @@ public class MoveZeros {
 \end{dryrun}
 
 \begin{complexity}
-Time: $O(n)$\quad Space: $O(1)$
+Time: $O(n)$ since we iterate through the array once in Pass 1 and touch the remaining elements in Pass 2.\\
+Space: $O(1)$ auxiliary space as we modify the array in-place.
 \end{complexity}
 
 \section{Remove Duplicates from Sorted Array}
@@ -3339,6 +3383,51 @@ One of the \textbf{most-asked} interview questions at every company. Know all th
 
 \textbf{Definition:} An element is a \textbf{leader} if it is strictly greater than all elements to its right. The rightmost element is always a leader.
 
+\subsection{Approach 1: Naive (Nested Loops)}
+The brute force way to solve this is to check every element one by one. For each element at index $i$, we compare it with all elements to its right (from $i+1$ to $n-1$). If we find any element that is greater than or equal to it, then the element is not a leader. If we reach the end without finding any such element, it is a leader.
+
+\begin{lstlisting}[caption={Leaders in Array --- Naive nested loops, O(n$^2$)}]
+import java.util.ArrayList;
+
+public class LeadersNaive {
+    public static ArrayList<Integer> findLeaders(int[] arr) {
+        ArrayList<Integer> leaders = new ArrayList<>();
+        int n = arr.length;
+
+        // Check each element one by one
+        for (int i = 0; i < n; i++) {
+            boolean isLeader = true;
+            
+            // Compare with all elements to its right
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] <= arr[j]) {
+                    isLeader = false; // Found a larger or equal element
+                    break;
+                }
+            }
+            
+            if (isLeader) {
+                leaders.add(arr[i]);
+            }
+        }
+        return leaders;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {16, 17, 4, 3, 5, 2};
+        System.out.println(findLeaders(arr));  // [17, 5, 2]
+    }
+}
+\end{lstlisting}
+
+\begin{complexity}
+Time: $O(n^2)$ due to the nested loops checking all elements to the right.\\
+Space: $O(1)$ auxiliary space (excluding the output list).
+\end{complexity}
+
+\subsection{Approach 2: Optimal (Right-to-Left Scan)}
+We can optimize this to $O(n)$ by scanning the array from right to left. Since the rightmost element is always a leader, we start by marking it as the current maximum leader. As we scan leftward, we compare each element with the maximum leader found so far. If the current element is strictly greater, it must be a leader, so we add it to our list and update our maximum. Finally, since we collected the leaders in reverse order, we reverse the list to restore the original left-to-right sequence.
+
 \begin{lstlisting}[caption={Leaders in Array --- Right-to-Left scan, O(n)}]
 import java.util.ArrayList;
 import java.util.Collections;
@@ -3383,7 +3472,8 @@ public class Leaders {
 \end{dryrun}
 
 \begin{complexity}
-Time: $O(n)$\quad Space: $O(k)$ where $k$ = number of leaders
+Time: $O(n)$ since we scan the array exactly once.\\
+Space: $O(1)$ auxiliary space if we do not count the list used to store the output. If we count the output, it is $O(k)$ where $k$ is the number of leaders.
 \end{complexity}
 
 %%############################################################
@@ -6542,7 +6632,103 @@ Next Permutation      & $O(n)$       & Pivot + successor + reverse suffix\\
 
 \textbf{Problem:} Given two sorted arrays \texttt{arr1[]} (size $m$) and \texttt{arr2[]} (size $n$), merge them in-place so that \texttt{arr1} contains the $m$ smallest elements and \texttt{arr2} contains the $n$ largest, both sorted.
 
-\textbf{Approach --- Gap Method (Shell Sort idea):} Start with gap $= \lceil (m+n)/2 \rceil$. Compare elements that are \texttt{gap} apart across both arrays and swap if out of order. Halve the gap each time. Stop when gap $= 0$.
+\subsection{Approach 1: Naive (Auxiliary Array \& Sort)}
+The simplest way to solve this is to copy all elements from both arrays into a single auxiliary array of size $m+n$, sort it, and then copy the first $m$ elements back to \texttt{arr1} and the remaining $n$ elements back to \texttt{arr2}.
+
+\begin{lstlisting}[caption={Merge Without Extra Space --- Naive Auxiliary Array \& Sort, O((m+n) log(m+n)) time O(m+n) space}]
+import java.util.Arrays;
+
+public class MergeNaive {
+    public static void merge(int[] arr1, int[] arr2) {
+        int m = arr1.length;
+        int n = arr2.length;
+        int[] temp = new int[m + n];
+
+        // Copy elements from arr1 to temp
+        for (int i = 0; i < m; i++) {
+            temp[i] = arr1[i];
+        }
+        // Copy elements from arr2 to temp
+        for (int i = 0; i < n; i++) {
+            temp[m + i] = arr2[i];
+        }
+
+        // Sort the temporary array
+        Arrays.sort(temp);
+
+        // Put sorted elements back
+        for (int i = 0; i < m; i++) {
+            arr1[i] = temp[i];
+        }
+        for (int i = 0; i < n; i++) {
+            arr2[i] = temp[m + i];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 3, 5, 7};
+        int[] arr2 = {0, 2, 6, 8, 9};
+        merge(arr1, arr2);
+        for (int x : arr1) System.out.print(x + " ");
+        System.out.println();
+        for (int x : arr2) System.out.print(x + " ");
+    }
+}
+\end{lstlisting}
+
+\begin{complexity}
+Time: $O((m+n) \log (m+n))$ to sort the temporary array.\\
+Space: $O(m+n)$ auxiliary space to store the merged elements.
+\end{complexity}
+
+\subsection{Approach 2: Intermediate (Insertion Sort Inline)}
+We can merge the arrays in-place by comparing each element of \texttt{arr1} with the first element of \texttt{arr2}. Since both arrays are sorted, if \texttt{arr1[i]} is greater than \texttt{arr2[0]}, they are out of order. We swap them, putting the smaller element in \texttt{arr1}. However, swapping might violate the sorted order of \texttt{arr2}. We then shift the swapped element in \texttt{arr2} to its correct sorted position (using a single pass of insertion sort).
+
+\begin{lstlisting}[caption={Merge Without Extra Space --- Inline Insertion Sort, O(m $\times$ n) time O(1) space}]
+public class MergeIntermediate {
+    public static void merge(int[] arr1, int[] arr2) {
+        int m = arr1.length;
+        int n = arr2.length;
+
+        // Traverse arr1 from left to right
+        for (int i = 0; i < m; i++) {
+            // If current element of arr1 is greater than the first element of arr2
+            if (arr1[i] > arr2[0]) {
+                // Swap arr1[i] and arr2[0]
+                int temp = arr1[i];
+                arr1[i] = arr2[0];
+                arr2[0] = temp;
+
+                // Place arr2[0] at its correct sorted position in arr2
+                int first = arr2[0];
+                int k;
+                // Shift elements in arr2 to make room for 'first'
+                for (k = 1; k < n && arr2[k] < first; k++) {
+                    arr2[k - 1] = arr2[k];
+                }
+                arr2[k - 1] = first;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 3, 5, 7};
+        int[] arr2 = {0, 2, 6, 8, 9};
+        merge(arr1, arr2);
+        for (int x : arr1) System.out.print(x + " ");
+        System.out.println();
+        for (int x : arr2) System.out.print(x + " ");
+    }
+}
+\end{lstlisting}
+
+\begin{complexity}
+Time: $O(m \times n)$ in the worst case (for each element in \texttt{arr1}, we might traverse and shift all elements of \texttt{arr2}).\\
+Space: $O(1)$ auxiliary space as we sort in-place.
+\end{complexity}
+
+\subsection{Approach 3: Optimal (Gap Method)}
+We can optimize to $O((m+n)\log(m+n))$ time while keeping $O(1)$ space using the Gap Method (Shell Sort concept). We start with a gap of $\lceil (m+n)/2 \rceil$. We compare and swap elements that are \texttt{gap} distance apart across both arrays. In each iteration, we halve the gap until it reaches zero.
 
 \begin{lstlisting}[caption={Merge Without Extra Space --- Gap Method, O(n log n) time O(1) space}]
 public class MergeWithoutSpace {
@@ -6594,7 +6780,6 @@ public class MergeWithoutSpace {
         int[] arr1 = {1, 3, 5, 7};
         int[] arr2 = {0, 2, 6, 8, 9};
         merge(arr1, arr2);
-        // arr1 = {0, 1, 2, 3}   arr2 = {5, 6, 7, 8, 9}
         for (int x : arr1) System.out.print(x + " ");
         System.out.println();
         for (int x : arr2) System.out.print(x + " ");
@@ -6620,15 +6805,17 @@ public class MergeWithoutSpace {
 \end{dryrun}
 
 \begin{complexity}
-Time: $O((m+n)\log(m+n))$ --- gap halves each pass, each pass is $O(m+n)$\quad Space: $O(1)$ --- fully in-place
+Time: $O((m+n)\log(m+n))$ --- the gap is halved in each step ($O(\log(m+n))$ passes), and each pass does linear comparisons ($O(m+n)$).\\
+Space: $O(1)$ auxiliary space as all swaps are done in-place.
 \end{complexity}
 
 \begin{interviewcorner}
 \begin{itemize}
-  \item Brute force: copy both to temp array, sort, copy back --- $O((m+n)\log(m+n))$ but $O(m+n)$ space
-  \item The gap method achieves same time complexity but $O(1)$ space --- that is what interviewers want
-  \item The gap calculation uses ceiling division: \texttt{gap = (gap + 1) / 2}
-  \item Always handle 3 cases: both in arr1, split across arr1/arr2, both in arr2
+  \item Start by explaining the naive approach (temp array and sort) which is simple but uses extra space.
+  \item Then discuss the inline insertion sort approach which runs in-place but has a worst-case $O(m \times n)$ time complexity.
+  \item Finally, explain the optimal Gap Method (Shell Sort idea) which is both in-place and runs in $O((m+n)\log(m+n))$ time.
+  \item Remember, the gap calculation uses ceiling division: \texttt{gap = (gap + 1) / 2}.
+  \item In the Gap Method, handle the three key pointer cases: both in \texttt{arr1}, split across, or both in \texttt{arr2}.
 \end{itemize}
 \end{interviewcorner}
 
@@ -6638,9 +6825,41 @@ Time: $O((m+n)\log(m+n))$ --- gap halves each pass, each pass is $O(m+n)$\quad S
 
 \textbf{Problem:} Find the contiguous subarray with the largest product.
 
-\textbf{Key insight:} Unlike sum (Kadane's), negatives complicate products --- two negatives make a positive. So track both \textbf{maximum} and \textbf{minimum} product ending at each index. When we see a negative number, the max and min swap roles.
+\subsection{Approach 1: Naive (Brute Force Nested Loops)}
+The simplest solution is to calculate the product of every possible contiguous subarray and track the maximum product found. We can achieve this by using nested loops: the outer loop starts at each index $i$, and the inner loop calculates the running product for all subarrays starting at $i$ and ending at $j$.
 
-\begin{lstlisting}[caption={Maximum Product Subarray --- O(n) time O(1) space}]
+\begin{lstlisting}[caption={Maximum Product Subarray --- Naive Brute Force, O(n$^2$) time O(1) space}]
+public class MaxProductSubarrayNaive {
+    public static int maxProduct(int[] arr) {
+        int maxProd = Integer.MIN_VALUE;
+
+        // Iterate through all possible subarrays
+        for (int i = 0; i < arr.length; i++) {
+            int currentProd = 1;
+            for (int j = i; j < arr.length; j++) {
+                currentProd *= arr[j];
+                maxProd = Math.max(maxProd, currentProd);
+            }
+        }
+        return maxProd;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 3, -2, 4};
+        System.out.println(maxProduct(arr)); // 6
+    }
+}
+\end{lstlisting}
+
+\begin{complexity}
+Time: $O(n^2)$ due to the nested loops checking all possible subarrays.\\
+Space: $O(1)$ auxiliary space.
+\end{complexity}
+
+\subsection{Approach 2: Optimal (Track Min/Max)}
+Unlike Kadane's algorithm for sum, the presence of negative numbers complicates product subarrays because a highly negative product multiplied by a negative number can become a large positive product. Therefore, we keep track of both the \textbf{maximum} and \textbf{minimum} product ending at each index. When we encounter a negative number, the minimum and maximum swap roles.
+
+\begin{lstlisting}[caption={Maximum Product Subarray --- Optimal Dynamic Programming, O(n) time O(1) space}]
 public class MaxProductSubarray {
 
     public static int maxProduct(int[] arr) {
@@ -6692,15 +6911,16 @@ init & 2  & 2   & 2    & 2\\
 \end{dryrun}
 
 \begin{complexity}
-Time: $O(n)$ --- single pass\quad Space: $O(1)$
+Time: $O(n)$ as we make a single pass through the array.\\
+Space: $O(1)$ auxiliary space.
 \end{complexity}
 
 \begin{interviewcorner}
 \begin{itemize}
-  \item \textbf{Why track min?} A very negative product $\times$ a negative number = large positive. The min product can become the max at any point
-  \item \textbf{What does zero do?} Resets both maxP and minP --- subarray cannot span across a zero beneficially
-  \item \textbf{Compare with Kadane's:} Kadane's tracks one variable (currentSum). Max product tracks two (maxP, minP) because multiplication is not monotone
-  \item Alternative: prefix product $\times$ suffix product approach also works in $O(n)$
+  \item \textbf{Why track min?} A very negative product $\times$ a negative number = large positive. The min product can become the max at any point.
+  \item \textbf{What does zero do?} Resets both \texttt{maxP} and \texttt{minP} --- a subarray cannot span across a zero beneficially.
+  \item \textbf{Compare with Kadane's:} Kadane's tracks one variable (\texttt{currentSum}). Max product tracks two (\texttt{maxP}, \texttt{minP}) because multiplication is not monotone.
+  \item Alternative: prefix product $\times$ suffix product approach also works in $O(n)$.
 \end{itemize}
 \end{interviewcorner}
 
@@ -6710,10 +6930,60 @@ Time: $O(n)$ --- single pass\quad Space: $O(1)$
 
 \textbf{Problem:} Given an array of size $n$ containing integers from 1 to $n$ where one number is repeated and one is missing, find both.
 
-\textbf{Approach --- Math (Sum and Sum of Squares):} Let repeating number $= A$, missing $= B$.
-$$S_{actual} - S_{expected} = A - B \quad (Equation 1)$$
-$$S2_{actual} - S2_{expected} = A^2 - B^2 = (A-B)(A+B) \quad (Equation 2)$$
-Divide Eq.2 by Eq.1 to get $A + B$, then solve.
+\subsection{Approach 1: Naive (Count/Frequency Array)}
+The simplest way to solve this is to keep track of the frequency of each number from $1$ to $n$ using a counting array (or hash table). We iterate through the input array to populate the frequency array. Then, we scan the frequency array: the number with a count of $2$ is the repeating number, and the number with a count of $0$ is the missing number.
+
+\begin{lstlisting}[caption={Repeating and Missing --- Naive Count Array approach, O(n) time O(n) space}]
+public class RepeatMissingNaive {
+    public static int[] findRepeatMissing(int[] arr) {
+        int n = arr.length;
+        // Count/frequency array of size n + 1 (1-based indexing)
+        int[] count = new int[n + 1];
+
+        // Record the occurrences of each element
+        for (int i = 0; i < n; i++) {
+            count[arr[i]]++;
+        }
+
+        int repeating = -1;
+        int missing = -1;
+
+        // Identify repeating (count = 2) and missing (count = 0)
+        for (int i = 1; i <= n; i++) {
+            if (count[i] == 2) {
+                repeating = i;
+            } else if (count[i] == 0) {
+                missing = i;
+            }
+        }
+
+        return new int[]{repeating, missing};
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {3, 1, 3, 4, 2}; // repeating=3, missing=5
+        int[] result = findRepeatMissing(arr);
+        System.out.println("Repeating: " + result[0]); // 3
+        System.out.println("Missing:   " + result[1]); // 5
+    }
+}
+\end{lstlisting}
+
+\begin{complexity}
+Time: $O(n)$ as we make two linear passes: one to count frequencies, and one to find the target values.\\
+Space: $O(n)$ for the auxiliary count/frequency array of size $n+1$.
+\end{complexity}
+
+\subsection{Approach 2: Optimal (Math - Sum and Sum of Squares)}
+We can optimize the space to $O(1)$ by using mathematical formulas. Let the repeating number be $A$ and the missing number be $B$.
+\begin{itemize}
+    \item Sum of first $n$ natural numbers: $S_n = \frac{n(n+1)}{2}$
+    \item Sum of squares of first $n$ natural numbers: $S^2_n = \frac{n(n+1)(2n+1)}{6}$
+\end{itemize}
+We calculate the actual sum of elements $S$ and the actual sum of squares of elements $S^2$ from the input array. We can then set up two equations:
+$$S - S_n = A - B \quad (Equation 1)$$
+$$S^2 - S^2_n = A^2 - B^2 = (A-B)(A+B) \quad (Equation 2)$$
+Dividing Equation 2 by Equation 1 gives us $A + B$. With $A - B$ and $A + B$, we can solve for $A$ and $B$ in $O(1)$ time.
 
 \begin{lstlisting}[caption={Repeating and Missing --- Math approach, O(n) time O(1) space}]
 public class RepeatMissing {
@@ -6772,7 +7042,8 @@ $B = 8 - 3$                              & $5$ (missing)\\
 \end{dryrun}
 
 \begin{complexity}
-Time: $O(n)$\quad Space: $O(1)$\\[4pt]
+Time: $O(n)$ as we make a single pass through the array to compute actual sum and square sum.\\
+Space: $O(1)$ auxiliary space.\\
 Use \texttt{long} for sums --- $n^2$ can overflow \texttt{int} for large $n$.
 \end{complexity}
 
