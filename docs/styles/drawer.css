@@ -1,0 +1,101 @@
+/* Curriculum Drawer/Modal panel (Editorial overlay style) */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 26, 26, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.drawer-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 680px;
+  height: 100vh;
+  background-color: var(--bg-cream);
+  border-left: var(--border-width) solid var(--border-color);
+  z-index: 1200;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+}
+.drawer.active {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  border-bottom: var(--border-width) solid var(--border-color);
+  padding: 24px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.drawer-title-block h3 {
+  font-size: 1.8rem;
+}
+.drawer-title-block span {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--latex-myred);
+  font-weight: 700;
+}
+.drawer-close {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  background-color: var(--neon-magenta);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0px var(--border-color);
+  transition: all 0.1s ease;
+  flex-shrink: 0;
+}
+.drawer-close:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--border-color);
+}
+
+.drawer-body {
+  padding: 32px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.drawer-syllabus-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.drawer-syllabus-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 1rem;
+}
+.drawer-syllabus-list li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  color: var(--latex-myred);
+  font-size: 0.75rem;
+  top: 3px;
+}
+

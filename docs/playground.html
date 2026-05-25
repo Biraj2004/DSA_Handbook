@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Playground — DSA Handbook (Java Edition)</title>
+  <meta name="description" content="Interactive labs, sorting visualizers, Big-O growth curves, and XeLaTeX compiler terminal for the DSA Handbook.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'&gt;&lt;circle cx='12' cy='12' r='10.5' fill='%23FF007F' stroke='%231A1A1A' stroke-width='1.5'/&gt;&lt;g transform='translate(3.6, 3.6) scale(0.7)'&gt;&lt;path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;/g&gt;&lt;/svg&gt;">
+  <!-- Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <!-- ── Header & Navigation ────────────────────────────────────────────────── -->
+  <header id="global-header" data-layout="standard"></header>
+
+  <!-- ── Interactive Playground Section ─────────────────────────────────────── -->
+  <section class="playground" id="visualizer" style="padding-top: 120px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">Interactive Labs</span>
+        <h2 class="section-title">Developer Playground</h2>
+        <p>Interactive tools designed to demonstrate complexity growth rates, array sorting behaviors, and compiling procedures in real-time.</p>
+      </div>
+
+      <div class="playground-grid">
+        
+        <!-- Left Side: Sorting Visualizer (Neo-Brutalism Style) -->
+        <div class="visualizer-container">
+          <div class="visualizer-header">
+            <h3 style="font-family: var(--font-sans); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+              <i data-lucide="bar-chart-3"></i> Sorting Visualizer
+            </h3>
+            <span class="badge neon-glow" id="visualizer-algo-badge">Selection Sort</span>
+          </div>
+
+          <div class="visualizer-screen" id="visualizer-bars-screen">
+            <!-- Visualizer Bars render dynamically -->
+          </div>
+
+          <div class="visualizer-controls-panel">
+            <button class="btn primary" id="algo-run-btn" title="Shortcut: Space">
+              <i data-lucide="play" id="algo-run-icon"></i> <span id="algo-run-text">Run</span>
+            </button>
+            <button class="btn secondary" id="algo-step-btn" title="Shortcut: S">
+              <i data-lucide="skip-forward"></i> Step
+            </button>
+            <button class="btn yellow" id="algo-reset-btn" title="Shortcut: R">
+              <i data-lucide="refresh-cw"></i> Randomize
+            </button>
+            
+            <select id="algo-select" class="btn" style="background-color: #fff; text-transform: none; padding: 12px 16px;">
+              <option value="selection">Selection Sort</option>
+              <option value="bubble">Bubble Sort</option>
+            </select>
+          </div>
+
+          <div class="visualizer-status" id="visualizer-log">
+            Status: Ready. Press "Run" or "Step" to begin.
+          </div>
+        </div>
+
+        <!-- Right Side: SVG Big-O Graph Explorer -->
+        <div class="graph-container">
+          <h3 style="font-family: var(--font-sans); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+            <i data-lucide="activity"></i> Big-O Curve Explorer
+          </h3>
+          
+          <svg class="graph-svg" id="bigo-svg" viewBox="0 0 500 250">
+            <!-- Grid Lines -->
+            <line x1="30" y1="60" x2="480" y2="60" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="30" y1="110" x2="480" y2="110" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="30" y1="160" x2="480" y2="160" stroke="#f5f5f5" stroke-width="1"/>
+            
+            <line x1="120" y1="20" x2="120" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="210" y1="20" x2="210" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="300" y1="20" x2="300" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="390" y1="20" x2="390" y2="220" stroke="#f5f5f5" stroke-width="1"/>
+
+            <!-- O(1) Constant (Green) -->
+            <path id="path-o1" class="graph-line graph-line-o1" d="M 30,200 L 480,200" />
+            <!-- O(log n) Logarithmic (Teal) -->
+            <path id="path-ologn" class="graph-line graph-line-ologn" d="M 30,220 Q 150,170 480,150" />
+            <!-- O(n) Linear (Blue) -->
+            <path id="path-on" class="graph-line graph-line-on" d="M 30,220 L 480,70" />
+            <!-- O(n log n) Linearithmic (Orange) -->
+            <path id="path-onlogn" class="graph-line graph-line-onlogn" d="M 30,220 Q 250,140 480,25" />
+            <!-- O(n^2) Quadratic (Red) -->
+            <path id="path-on2" class="graph-line graph-line-on2" d="M 30,220 Q 110,180 180,20" />
+          </svg>
+
+          <div class="graph-legend">
+            <div class="legend-item active" id="legend-o1" data-curve="o1">
+              <div class="legend-color legend-o1"></div>
+              <span>O(1) Constant</span>
+            </div>
+            <div class="legend-item active" id="legend-ologn" data-curve="ologn">
+              <div class="legend-color legend-ologn"></div>
+              <span>O(log n) Logarithmic</span>
+            </div>
+            <div class="legend-item active" id="legend-on" data-curve="on">
+              <div class="legend-color legend-on"></div>
+              <span>O(n) Linear</span>
+            </div>
+            <div class="legend-item active" id="legend-onlogn" data-curve="onlogn">
+              <div class="legend-color legend-onlogn"></div>
+              <span>O(n log n)</span>
+            </div>
+            <div class="legend-item active" id="legend-on2" data-curve="on2">
+              <div class="legend-color legend-on2"></div>
+              <span>O(n²) Quadratic</span>
+            </div>
+          </div>
+
+          <div class="graph-explanation" id="graph-expl-text">
+            Hover over a curve or legend tag above to analyze its time complexity scaling, search bounds, and sample array operations.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Editorial Row: Build Automation Terminal -->
+      <div class="editorial-row">
+        <div>
+          <h3 style="font-family: var(--font-sans); font-weight: 800; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
+            <i data-lucide="terminal"></i> Compiler Terminal Simulator
+          </h3>
+          <p>
+            The DSA Handbook is compiled using <strong>XeLaTeX</strong> to enable OpenType font structures and premium math notations. Compiling runs the XeLaTeX parser twice to resolve TOC index structures, dynamic math bookmarks, and page counting before cleaning up auxiliary files automatically.
+          </p>
+          <p>
+            Trigger the build automation script simulator on the right to see the compilation workflow execute line-by-line in real-time.
+          </p>
+          <button class="btn magenta" id="terminal-run-btn">
+            <i data-lucide="play-circle"></i> Run build_handbook.ps1
+          </button>
+        </div>
+
+        <div class="terminal-container">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+            </div>
+            <span>PowerShell Core</span>
+          </div>
+          <div class="terminal-body" id="terminal-screen">
+            <div class="terminal-line terminal-input">PS C:\Users\biraj\Desktop\DSA_Handbook> _</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Developer HUD HUD Stats Panel ────────────────────────────────────── -->
+  <div class="dev-hud">
+    <div class="dev-hud-panel" id="dev-hud-panel">
+      <div class="dev-hud-header">
+        <span>Dev Dashboard</span>
+        <span style="color: var(--neon-magenta);">v2.2.0</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>DOM Nodes:</span>
+        <span class="dev-hud-val" id="dev-dom-count">0</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>Load Time:</span>
+        <span class="dev-hud-val" id="dev-load-time">0 ms</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>XeLaTeX RAM:</span>
+        <span class="dev-hud-val" style="color: var(--latex-myteal);">~168 MB</span>
+      </div>
+      <div class="dev-hud-stat">
+        <span>Source:</span>
+        <span class="dev-hud-val" id="dev-api-status" style="color: var(--latex-mygreen);">API Checked</span>
+      </div>
+      <div style="font-size: 0.65rem; border-top: 1px solid #ddd; padding-top: 6px; color:#666; text-align: center;">
+        Press <strong class="kbd-key" style="box-shadow:none; padding:1px 4px;">?</strong> to view keyboard shortcuts
+      </div>
+    </div>
+    <button class="dev-hud-trigger" id="dev-hud-btn" title="Toggle Dashboard" aria-label="Toggle Developer Dashboard">
+      <i data-lucide="sliders"></i>
+    </button>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div class="drawer-overlay" id="kbd-overlay"></div>
+  <div class="kbd-modal" id="kbd-modal">
+    <div class="kbd-modal-header">
+      <i data-lucide="keyboard" style="vertical-align: middle; margin-right: 6px;"></i> Shortcut Commands
+    </div>
+    <div class="kbd-list">
+      <div class="kbd-item">
+        <span>Toggle Dashboard HUD</span>
+        <kbd class="kbd-key">D</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Close any Modal/Drawer</span>
+        <kbd class="kbd-key">Esc</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Play/Pause Sort Visualizer</span>
+        <kbd class="kbd-key">Space</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Step Sort Visualizer</span>
+        <kbd class="kbd-key">S</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Randomize Visualizer Array</span>
+        <kbd class="kbd-key">R</kbd>
+      </div>
+      <div class="kbd-item">
+        <span>Show/Hide Shortcuts Guide</span>
+        <kbd class="kbd-key">?</kbd>
+      </div>
+    </div>
+    <button class="btn secondary" id="kbd-close-btn" style="width: 100%; margin-top: 20px; justify-content: center;">
+      Dismiss
+    </button>
+  </div>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+  <footer id="global-footer" data-layout="standard"></footer>
+
+  <!-- ── Scripts ────────────────────────────────────────────────────────────── -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="scripts/components-loader.js" defer></script>
+  <script src="scripts/constants.js" defer></script>
+  <script src="scripts/github-api.js" defer></script>
+  <script src="scripts/visualizer.js" defer></script>
+  <script src="scripts/terminal.js" defer></script>
+  <script src="scripts/dev-hud.js" defer></script>
+  <script src="scripts/playground-page.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://biraj2004.github.io/DSA_Handbook/sitemap.xml

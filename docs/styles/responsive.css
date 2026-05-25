@@ -1,0 +1,277 @@
+/* ── Interactive Highlight / Focus Classes ───────────────────────────────── */
+.focus-glow {
+  box-shadow: 0px 0px 0px 3px var(--border-color) !important;
+}
+
+/* ── Comprehensive Responsive & Screen Adaptation Overrides ─────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --book-scale: 0.9;
+  }
+  .book-container {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --book-scale: 0.85;
+  }
+  body {
+    font-size: 15px;
+  }
+  .section-header {
+    text-align: center;
+    margin: 0 auto 32px auto;
+  }
+  .syllabus-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px !important;
+    padding-bottom: 16px !important;
+    margin-bottom: 24px !important;
+  }
+  .syllabus-header p {
+    margin: 0 auto;
+    font-size: 0.95rem;
+  }
+  .nav-container {
+    height: 60px;
+  }
+  .mobile-nav {
+    top: 63px;
+  }
+  .logo {
+    font-size: 1.3rem;
+  }
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    box-shadow: 1.5px 1.5px 0px var(--border-color);
+  }
+  .logo-icon svg,
+  .logo-icon i {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .hero-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-tag {
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-tag-text {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+  }
+  .tag-divider {
+    display: none;
+  }
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  .hero-meta {
+    justify-content: center;
+  }
+  .hero-ctas {
+    justify-content: center;
+  }
+  .hero {
+    padding: 40px 0;
+  }
+  .curriculum, .reader, .playground {
+    padding: 48px 0;
+  }
+  
+  /* Responsive Book Page */
+  .book-page-viewport {
+    height: 750px;
+  }
+  .book-page {
+    padding: 24px 16px;
+  }
+  .book-page-header {
+    margin-bottom: 16px;
+  }
+  
+  /* Reader Controls mobile adjustments */
+  .reader-controls {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+    text-align: center;
+  }
+  .reader-page-indicator {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+  .page-indicator-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .page-indicator-divider {
+    display: none;
+  }
+  .page-indicator-title {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--latex-mygray);
+  }
+  .reader-buttons {
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+  }
+  .reader-buttons .btn {
+    flex: 1;
+    justify-content: center;
+    max-width: 130px;
+  }
+
+  /* Tracker info mobile adjustments to prevent squeezing */
+  .tracker-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  /* Scrollable LaTeX tables to prevent horizontal bleeding */
+  .latex-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Visualizer mobile adjustments */
+  .visualizer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .visualizer-screen {
+    height: 180px;
+    padding: 8px;
+    gap: 3px;
+  }
+  .visualizer-bar {
+    font-size: 0.6rem;
+    border-width: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --book-scale: 0.8;
+    --book-rotate-y: -10deg;
+    --book-rotate-x: 5deg;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  
+  /* Primitives cell and pointer scaling on small screens */
+  .page-tikz-canvas {
+    padding: 8px;
+  }
+  .page-tikz-canvas div {
+    gap: 3px !important;
+  }
+  .page-tikz-canvas div div {
+    width: 32px !important;
+    height: 30px !important;
+  }
+  .page-tikz-canvas div div span {
+    font-size: 0.75rem !important;
+  }
+  .page-tikz-canvas div span {
+    font-size: 0.65rem !important;
+  }
+  
+  /* Code blocks font size reduction */
+  .code-listing {
+    font-size: 0.72rem;
+  }
+  .code-ln {
+    width: 18px;
+    padding-right: 6px;
+    margin-right: 6px;
+  }
+  
+  .terminal-container {
+    font-size: 0.75rem;
+    height: 240px;
+  }
+  
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+  }
+  
+  .dev-hud {
+    bottom: 16px;
+    right: 16px;
+  }
+  .dev-hud-panel {
+    width: 240px;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --book-scale: 0.7;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* ── Show Overlay / Hide Preview on Mobile Viewports ────────────────────── */
+@media (max-width: 767px), (max-height: 520px) and (max-width: 950px) {
+  .reader-controls {
+    display: none !important;
+  }
+  .book-page-viewport {
+    display: none !important;
+  }
+  .mobile-preview-overlay {
+    display: flex !important;
+  }
+}
+
+/* ── Minimal mobile header formatting (prevent wrapping, keep branding visible) ── */
+@media (max-width: 768px) {
+  .header .btn {
+    width: auto !important;
+    padding: 6px 12px !important;
+    font-size: 0.7rem !important;
+    box-shadow: 2px 2px 0px var(--border-color) !important;
+  }
+  .logo {
+    font-size: 1.5rem !important;
+    white-space: nowrap !important;
+  }
+  .logo span {
+    display: inline !important;
+  }
+}
+
+

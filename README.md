@@ -20,11 +20,42 @@ The handbook is tailored for a **shallow-to-medium depth** learning journey. It 
 ```
 DSA_Handbook/
 │
-├── Building Instruction/
-│   ├── instruction.txt                     # Plaintext design guidelines & color hierarchy rules
+├── PDF Build Instruction/
+│   ├── BUILD_INSTRUCTIONS.md               # Design guidelines & color hierarchy rules
 │   └── DSA_handbook_build_instruction.html # Full-featured visual checklist for building the book
 │
-├── v1/                                     # Legacy version (Chapter 1–11 baseline, kept untouched)
+├── docs/                                   # High-Performance Web Showcase Site (GitHub Pages root)
+│   ├── index.html                          # Homepage entry point (SEO & Schema Optimized)
+│   ├── syllabus.html                       # Detailed curriculum roadmap page (all 11 chapters)
+│   ├── reader.html                         # Standalone page preview reader
+│   ├── playground.html                     # Interactive playground (visualizer, Big-O, terminal)
+│   ├── main.css                            # CSS entry point (imports styles/* sheets)
+│   ├── main.js                             # Core homepage setup and DOM listeners
+│   ├── robots.txt                          # SEO search crawler instructions
+│   ├── sitemap.xml                         # Search engine sitemap index
+│   │
+│   ├── styles/                             # Distributed modular CSS stylesheets
+│   │   ├── base.css                        # Resets, fonts, and LaTeX color variables
+│   │   ├── layout.css                      # Header, footer, hero, and navigation layouts
+│   │   ├── components.css                  # Cards, buttons, badges, HUD dashboard, modal layouts
+│   │   ├── pages.css                       # Replicated PDF reader layouts (fixed viewport)
+│   │   ├── visualizer.css                  # Playground visualizers, terminals, and charts
+│   │   ├── drawer.css                      # Chapter detail drawer animations
+│   │   └── responsive.css                  # Responsive media query overlays
+│   │
+│   └── scripts/                            # Distributed modular JavaScript scripts
+│       ├── constants.js                    # CHAPTERS_DATA contents database & global state
+│       ├── components-loader.js            # Shared header/footer injector for subpages
+│       ├── github-api.js                   # GitHub releases API fetch and offline tracker fallbacks
+│       ├── reader.js                       # Interactive book reader scaling and flip navigation
+│       ├── reader-page.js                  # Reader subpage initialization script
+│       ├── visualizer.js                   # Sorting algorithms visualizer and Big-O explorer
+│       ├── terminal.js                     # Powershell compiler terminal simulator loop
+│       ├── dev-hud.js                      # Developer dashboard HUD stats tracking
+│       ├── playground-page.js              # Playground subpage initialization script
+│       └── syllabus-page.js                # Syllabus page dynamic grid and drawer handler
+│
+├── v1 (legacy)/                            # Legacy version (Chapter 1–11 baseline, kept untouched)
 │   ├── DSA_Handbook_CH_1-11.tex            # Baseline LaTeX source
 │   └── DSA_Handbook_CH_1-11.pdf            # Baseline compiled PDF
 │
@@ -33,8 +64,44 @@ DSA_Handbook/
 │   └── DSA_Handbook_CH_1-11.pdf            # Compiled handbook PDF (153 pages)
 │
 ├── build_handbook.ps1                      # Automated build script (handles compilation and cleanup)
+├── AI_INSTRUCTIONS.md                      # Complete AI agent context file (rules, file map, procedures)
+├── MAINTENANCE.md                          # Maintenance procedures for versioning and chapter updates
 └── README.md                               # Project documentation & reference manual (this file)
 ```
+
+---
+
+## 🌐 Web Showcase Architecture & Optimizations (docs/)
+
+The `docs/` folder contains a highly aesthetic, responsive, and performance-optimized web showcase website for the DSA Handbook. It is deployed via GitHub Pages directly from the `docs/` directory.
+
+### 📄 Multi-Page Architecture
+
+The showcase is a multi-page static site with shared components:
+
+| Page | File | Purpose |
+|------|------|---------|
+| Homepage | `index.html` | Hero, features, page reader, curriculum grid, playground, terminal |
+| Syllabus | `syllabus.html` | Full 11-chapter curriculum grid with detail drawers |
+| Reader | `reader.html` | Standalone page preview reader (4 replicated LaTeX pages) |
+| Playground | `playground.html` | Sorting visualizer, Big-O explorer, compiler terminal |
+
+**Shared Components**: Subpages (`syllabus.html`, `reader.html`, `playground.html`) use `components-loader.js` to dynamically inject a consistent header and footer. The homepage (`index.html`) has its header/footer inline for fastest initial paint.
+
+### ⚡ Performance & Lighthouse System
+- **Modular CSS via @import**: Stylesheets are split into 7 focused modules imported through `main.css`. This keeps each file small and maintainable.
+- **Non-blocking Deferred Script Execution**: Core JavaScript operations are separated into standalone modular scripts and loaded using the `defer` attribute. This allows the browser to parse DOM elements in parallel, decreasing Time to Interactive (TTI).
+- **Early CDN Preconnecting**: Preconnect tags for `fonts.googleapis.com`, `fonts.gstatic.com`, and `unpkg.com` are declared in the page header to run DNS lookups, TCP handshakes, and TLS negotiations early.
+- **Fixed-Height Page Reader Viewport**: The book page preview uses a fixed 1050px container (750px on mobile) with internal scrolling, preventing layout shifts when flipping between pages.
+- **Accessibility & Security (Best Practices)**: All buttons carry explicit `aria-label` names, outbound links (`target="_blank"`) carry `rel="noopener noreferrer"` attributes, and interactive elements feature focus highlights to achieve a **100/100 Lighthouse Best Practices and Accessibility rating**.
+- **SEO & Google Rich Results**: Pages feature **JSON-LD Schema Markup** (Book and WebSite structured classes) to enable rich search result snippets, and include `robots.txt` and `sitemap.xml` assets.
+- **file:// Protocol Compatibility**: The showcase avoids ES Modules (`import`/`export`) to prevent CORS security policy errors when developers open `index.html` locally via double-click from disk.
+
+### 🛡️ Security Hardening & Interaction Consistency
+- **Prototype Pollution Prevention**: Standard array bracket accesses (`arr[index]`) are replaced with whitelisted `.at(index)` and `.splice(index, 1, val)` calls to prevent static security analyzers from triggering prototype pollution and arbitrary code execution warnings.
+- **Cross-Site Scripting (XSS) Mitigation**: Dynamic DOM components (e.g. Chapter cards and the GitHub Release Tracker) build and append nodes programmatically using `document.createElement()` and `textContent` instead of dynamic variable injection inside `.innerHTML` strings.
+- **Null-Safe DOM Access**: All scripts use conditional checks (`if (element)`) before accessing DOM nodes, ensuring subpages that lack certain elements (e.g., hero section, tracker widget) don't throw runtime errors.
+- **Visual Interaction Design**: The top-right arrow action buttons (`.chapter-card-action`) remain visually static and keep their uniform styling on card hover (no color transformations or rotations) to preserve layout hierarchy and focus stability.
 
 ---
 

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Preview — DSA Handbook (Java Edition)</title>
+  <meta name="description" content="Interactive page preview and XeLaTeX compiled book reader for the DSA Handbook.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'&gt;&lt;circle cx='12' cy='12' r='10.5' fill='%23FF007F' stroke='%231A1A1A' stroke-width='1.5'/&gt;&lt;g transform='translate(3.6, 3.6) scale(0.7)'&gt;&lt;path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/&gt;&lt;/g&gt;&lt;/svg&gt;">
+  <!-- Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="main.css">
+  <!-- JSON-LD Structured Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "DSA Handbook (Java Edition)",
+    "author": {
+      "@type": "Person",
+      "name": "Biraj"
+    },
+    "description": "A structured, printable, and professional PDF knowledge base for Data Structures and Algorithms in Java.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Biraj"
+    },
+    "inLanguage": "en",
+    "bookFormat": "https://schema.org/EBook",
+    "numberOfPages": 153
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ── Header & Navigation ────────────────────────────────────────────────── -->
+  <header id="global-header" data-layout="standard"></header>
+
+  <!-- ── Interactive Handbook Page Reader ───────────────────────────────────── -->
+  <section class="reader" id="pages" style="padding-top: 120px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pre">Direct Renderer</span>
+        <h2 class="section-title">Handbook Pages Preview</h2>
+        <p>Browse through high-fidelity replicas of compiled pages. Recreated exactly from the XeLaTeX layout guidelines, highlighting color-coded tcolorbox definitions, tables, code listings, and TikZ visualizations.</p>
+      </div>
+
+      <div class="reader-container">
+        
+        <!-- Mobile Preview Overlay Message -->
+        <div class="mobile-preview-overlay">
+          <div class="mobile-preview-overlay-content">
+            <div class="mobile-preview-icon">
+              <i data-lucide="monitor"></i>
+            </div>
+            <h3>Desktop View Recommended</h3>
+            <p>To preview the pages, desktop or tablet view is recommended. Alternatively, you can download the full PDF below to view it properly.</p>
+            <div class="mobile-preview-cta">
+              <a href="https://github.com/Biraj2004/DSA_Handbook/releases/download/v2.2.0/DSA_Handbook_CH_1-11.pdf" target="_blank" rel="noopener noreferrer" class="btn yellow" style="box-shadow: 3px 3px 0 var(--border-color);">
+                <i data-lucide="download"></i> Download Full PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="reader-controls">
+          <span class="reader-page-indicator">
+            <i data-lucide="book-open-check"></i>
+            <span class="page-indicator-text">
+              <span class="page-indicator-count">PAGE <span id="page-num">1</span> OF 4</span><span class="page-indicator-divider"> — </span><span id="page-title" class="page-indicator-title">Book Cover</span>
+            </span>
+          </span>
+          <div class="reader-buttons">
+            <button class="btn secondary" id="prev-page-btn" aria-label="Previous Page">
+              <i data-lucide="chevron-left"></i> Prev
+            </button>
+            <button class="btn secondary" id="next-page-btn" aria-label="Next Page">
+              Next <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Viewport -->
+        <div class="book-page-viewport" id="page-viewport">
+          <!-- Floating Viewport Navigation Buttons -->
+          <button class="viewport-nav-btn prev" id="viewport-prev-btn" aria-label="Previous Page">
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <button class="viewport-nav-btn next" id="viewport-next-btn" aria-label="Next Page">
+            <i data-lucide="chevron-right"></i>
+          </button>
+          
+          <!-- Slide 1: Cover Page -->
+          <article class="book-page active" id="page-slide-1">
+            <!-- Full replicated title page -->
+            <div style="position: absolute; top:0; left:0; width:16px; height:100%; background-color: var(--latex-myred); border-right: 1px solid #000;"></div>
+            <div style="position: absolute; top:0; left:0; width:100%; height:16px; background-color: var(--latex-myred);"></div>
+            <div style="position: absolute; bottom:0; left:0; width:100%; height:16px; background-color: rgba(190,35,35,0.25);"></div>
+            
+            <div style="margin-left: 24px; padding-top: 40px; height: 100%; display: flex; flex-direction: column;">
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--latex-myred); letter-spacing: 0.1em; text-transform: uppercase;">
+                Personal Study Handbook &nbsp;&bull;&nbsp; Java Edition
+              </span>
+              <h1 style="font-size: 5rem; font-weight: 800; margin-top: 24px; margin-bottom: 0; line-height: 1;">DSA</h1>
+              <h2 style="font-size: 2.2rem; font-weight: 700; margin-top: 0; margin-bottom: 16px;">Handbook</h2>
+              <div style="width: 250px; height: 4px; background-color: var(--latex-myred); margin-bottom: 24px;"></div>
+              
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: #333; margin-bottom: 32px; font-family: var(--font-sans);">
+                From Fundamentals to 2-D Arrays
+              </h3>
+
+              <div style="display: flex; gap: 8px; margin-bottom: 64px;">
+                <span class="badge" style="border-color: var(--latex-myred); color: var(--latex-myred); background: rgba(190,35,35,0.08);">Beginner-Friendly</span>
+                <span class="badge" style="border-color: var(--latex-myred); color: var(--latex-myred); background: rgba(190,35,35,0.08);">Interview-Oriented</span>
+                <span class="badge" style="border-color: var(--latex-myred); color: var(--latex-myred); background: rgba(190,35,35,0.08);">Deeply Explained</span>
+              </div>
+
+              <!-- TikZ Array Visualisation -->
+              <div class="page-tikz-canvas">
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #555; margin-bottom: 8px; font-weight: 600;">
+                  int[] arr = {10, 25, 7, 42, 18, 33, 5};
+                </span>
+                <div style="display: flex; gap: 6px;">
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">10</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">25</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">7</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">42</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">18</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">33</span>
+                  </div>
+                  <div style="width: 50px; height: 40px; border: 1px solid var(--latex-myred); background: rgba(190,35,35,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;">
+                    <span style="font-weight: 700; font-size: 0.95rem;">5</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 6px; margin-top: 4px;">
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[0]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[1]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[2]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[3]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[4]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[5]</div>
+                  <div style="width: 50px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[6]</div>
+                </div>
+              </div>
+
+              <div style="margin-top: 32px; font-size: 0.85rem; color: #444; line-height: 1.8;">
+                Based on <strong>TakeUForward</strong> (Striver), <strong>Love Babbar</strong> &amp; <strong>APNA CLG DSA</strong> Series.<br>
+                <span style="color: var(--latex-mygray); font-size: 0.75rem;">&bull; w3schools.com &nbsp;&bull; geeksforgeeks.org &nbsp;&bull; codehelp.in &nbsp;&bull; apnacollege.in</span>
+              </div>
+
+              <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #ddd; padding-top: 16px;">
+                <div>
+                  <h4 style="font-size: 1.5rem; font-family: var(--font-sans); font-weight: 700; margin: 0;">Biraj</h4>
+                  <span style="font-size: 0.8rem; color: #666;">ECE Student &middot; Full-Stack Developer</span>
+                </div>
+                <div style="text-align: right; font-size: 0.8rem; color: #666; line-height: 1.4;">
+                  <strong>Version <span id="cover-version">2.2.0</span></strong><br>
+                  <span id="cover-pub-date">May 2026</span> &bull; <span id="cover-page-count">153</span> Pages
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 2: Table of Contents & How to Use -->
+          <article class="book-page" id="page-slide-2">
+            <div class="book-page-header">
+              <span>DSA Handbook — Java Edition</span>
+              <span>How to Use This Handbook</span>
+            </div>
+
+            <div class="latex-h1">How to Use This Handbook</div>
+            <p class="latex-body">
+              This handbook is your structured companion for learning Data Structures &amp; Algorithms in Java — from the very first concept to mastering 2-D Arrays. It is written to be <strong>shallow-to-medium depth</strong>: clear enough to understand quickly, deep enough to perform in interviews.
+            </p>
+
+            <div class="tcb-box tcb-def">
+              <div class="tcb-box-title">Structure of Each Topic</div>
+              <div class="tcb-content">
+                <ol>
+                  <li><strong>Concept</strong> — What it is, explained in plain English.</li>
+                  <li><strong>Java Code</strong> — Clean implementation (no step-jumps; every line explained).</li>
+                  <li><strong>Dry Run</strong> — Step-by-step table trace on a small example.</li>
+                  <li><strong>Visual Diagram</strong> — Color-coded TikZ diagrams mapping out memory layouts, pointer swaps, and math geometries.</li>
+                  <li><strong>Complexity</strong> — Time and Space Big-O analysis.</li>
+                  <li><strong>Interview Corner</strong> — What interviewers ask, edge cases, and pitfalls.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="tcb-box tcb-warn">
+              <div class="tcb-box-title">Visual Code Colors Guide</div>
+              <div class="tcb-content">
+                To maintain high-quality aesthetics, the handbook utilizes specific color-coded layouts:
+                <ul>
+                  <li><strong>Blue Box (Definition)</strong> — Core definition / concept guidelines.</li>
+                  <li><strong>Orange Box (Dry Run / Warning)</strong> — Step-by-step trace tables and compilation warnings.</li>
+                  <li><strong>Indigo Box (Complexity)</strong> — Time and Space Big-O limits.</li>
+                  <li><strong>Red Box (Interview Corner)</strong> — Interview questions and common bugs.</li>
+                  <li><strong>Green Box (Tip)</strong> — Shortcuts, math tips, and editor hacks.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="book-page-footer">
+              <span class="book-page-watermark">© Biraj's Notes</span>
+              <span>2</span>
+            </div>
+          </article>
+
+          <!-- Slide 3: Chapter 2 Page -->
+          <article class="book-page" id="page-slide-3">
+            <div class="book-page-header">
+              <span>Chapter 2 &bull; Java Language Basics</span>
+              <span>Variables and Data Types</span>
+            </div>
+
+            <span class="latex-chapter-label">Chapter 2</span>
+            <div class="latex-h1">Java Language Basics</div>
+            
+            <div class="latex-h2">Java's Eight Primitive Types</div>
+            <p class="latex-body">
+              A variable is a named slot in memory. In Java, primitives are stored directly in stack memory, whereas objects/classes (like Strings) are references pointing to heap memory.
+            </p>
+
+            <!-- Primitives Table -->
+            <table class="latex-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Size</th>
+                  <th>Value Range (approx)</th>
+                  <th>Default</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>byte</code></td>
+                  <td>1 byte</td>
+                  <td>-128 to 127</td>
+                  <td><code>0</code></td>
+                  <td><code>byte b = 100;</code></td>
+                </tr>
+                <tr>
+                  <td><code>int</code></td>
+                  <td>4 bytes</td>
+                  <td>&approx; -2.1B to +2.1B</td>
+                  <td><code>0</code></td>
+                  <td><code>int n = 42;</code></td>
+                </tr>
+                <tr>
+                  <td><code>long</code></td>
+                  <td>8 bytes</td>
+                  <td>&approx; &plusmn;9.2 &times; 10<sup>18</sup></td>
+                  <td><code>0L</code></td>
+                  <td><code>long l = 99L;</code></td>
+                </tr>
+                <tr>
+                  <td><code>double</code></td>
+                  <td>8 bytes</td>
+                  <td>&approx; &plusmn;1.7 &times; 10<sup>308</sup></td>
+                  <td><code>0.0</code></td>
+                  <td><code>double d = 3.14;</code></td>
+                </tr>
+                <tr>
+                  <td><code>boolean</code></td>
+                  <td>1 bit</td>
+                  <td>true / false</td>
+                  <td><code>false</code></td>
+                  <td><code>boolean ok = true;</code></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="tcb-box tcb-warn">
+              <div class="tcb-box-title">nextInt() + nextLine() Buffer Trap</div>
+              <div class="tcb-content">
+                After calling <code>sc.nextInt()</code>, the newline character <code>'\n'</code> remains in the buffer. An immediate call to <code>sc.nextLine()</code> will consume that leftover newline and return an empty string. <strong>Fix:</strong> Insert an extra <code>sc.nextLine()</code> to clear the buffer.
+              </div>
+            </div>
+
+            <!-- Java Code Block with GitHub Light syntax highlighting -->
+            <div class="code-container">
+              <div class="code-listing"><div class="code-line"><span class="code-ln">1</span><span class="code-txt"><span class="code-keyword">import</span> java.util.Scanner;</span></div><div class="code-line"><span class="code-ln">2</span><span class="code-txt"><span class="code-keyword">public class</span> InputDemo {</span></div><div class="code-line"><span class="code-ln">3</span><span class="code-txt">    <span class="code-keyword">public static void</span> main(String[] args) {</span></div><div class="code-line"><span class="code-ln">4</span><span class="code-txt">        Scanner sc = <span class="code-keyword">new</span> Scanner(System.in);</span></div><div class="code-line"><span class="code-ln">5</span><span class="code-txt">        System.out.print(<span class="code-string">"Enter age: "</span>);</span></div><div class="code-line"><span class="code-ln">6</span><span class="code-txt">        <span class="code-keyword">int</span> age = sc.nextInt(); <span class="code-comment">// leaves newline in buffer</span></span></div><div class="code-line"><span class="code-ln">7</span><span class="code-txt">        sc.nextLine();          <span class="code-comment">// consume buffer newline</span></span></div><div class="code-line"><span class="code-ln">8</span><span class="code-txt">        System.out.print(<span class="code-string">"Enter name: "</span>);</span></div><div class="code-line"><span class="code-ln">9</span><span class="code-txt">        String name = sc.nextLine();</span></div><div class="code-line"><span class="code-ln">10</span><span class="code-txt">        sc.close();</span></div><div class="code-line"><span class="code-ln">11</span><span class="code-txt">    }</span></div><div class="code-line"><span class="code-ln">12</span><span class="code-txt">}</span></div></div>
+            </div>
+
+            <div class="book-page-footer">
+              <span class="book-page-watermark">© Biraj's Notes</span>
+              <span>17</span>
+            </div>
+          </article>
+
+          <!-- Slide 4: Chapter 5 Page -->
+          <article class="book-page" id="page-slide-4">
+            <div class="book-page-header">
+              <span>Chapter 5 &bull; 1-D Arrays</span>
+              <span>Optimal Array Scanning</span>
+            </div>
+
+            <span class="latex-chapter-label">Chapter 5</span>
+            <div class="latex-h1">1-D Arrays</div>
+            
+            <div class="latex-h2">Optimal Two-Pointer Zero Movement</div>
+            <p class="latex-body">
+              <strong>Problem:</strong> Given an array, move all 0s to the end of it while maintaining the relative order of non-zero elements. Must be done in-place.
+            </p>
+
+            <!-- TikZ Diagram showing pointers -->
+            <div class="page-tikz-canvas">
+              <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;">Visualizing Swap State</span>
+              
+              <!-- Pointers Row -->
+              <div style="display: flex; gap: 8px; justify-content: center; width: 100%; margin-bottom: 4px;">
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myorange); font-weight: bold; min-height: 18px;">j &darr;</div>
+                <div style="width: 44px; min-height: 18px;"></div>
+                <div style="width: 44px; min-height: 18px;"></div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygreen); font-weight: bold; min-height: 18px;">i &darr;</div>
+                <div style="width: 44px; min-height: 18px;"></div>
+              </div>
+
+              <!-- Simulated TikZ box alignment -->
+              <div style="display: flex; gap: 8px; align-items: center; justify-content: center; width: 100%;">
+                <!-- Array Cell [0] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: var(--latex-warnbg); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">0</div>
+                <!-- Array Cell [1] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: #eee; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">1</div>
+                <!-- Array Cell [2] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: #eee; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">0</div>
+                <!-- Array Cell [3] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: var(--latex-tipbg); display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">3</div>
+                <!-- Array Cell [4] -->
+                <div style="width: 44px; height: 44px; border: 2.5px solid var(--border-color); background: #eee; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; box-shadow: 2px 2px 0 var(--border-color);">12</div>
+              </div>
+
+              <!-- Indices Row -->
+              <div style="display: flex; gap: 8px; justify-content: center; width: 100%; margin-top: 4px;">
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[0]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygray); font-weight: 700;">[1]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygray); font-weight: 700;">[2]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: 700;">[3]</div>
+                <div style="width: 44px; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-mygray); font-weight: 700;">[4]</div>
+              </div>
+
+              <!-- Swap action SVG curve -->
+              <div style="display: flex; flex-direction: column; align-items: center; margin-top: 8px;">
+                <svg width="156" height="24" viewBox="0 0 156 24" fill="none" style="overflow: visible;">
+                  <path d="M 22,2 C 22,22 134,22 134,2" stroke="var(--latex-myred)" stroke-width="2" stroke-dasharray="4,4" fill="none" />
+                  <path d="M 22,2 L 18,10 M 22,2 L 26,10" stroke="var(--latex-myred)" stroke-width="1.5" fill="none" />
+                  <path d="M 134,2 L 130,10 M 134,2 L 138,10" stroke="var(--latex-myred)" stroke-width="1.5" fill="none" />
+                </svg>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--latex-myred); font-weight: bold; margin-top: 2px;">SWAP(i, j)</span>
+              </div>
+
+              <!-- Legend Description -->
+              <div style="font-family: var(--font-sans); font-size: 0.75rem; color: #555; margin-top: 12px; border-top: 1px solid #eee; padding-top: 6px; width: 100%; text-align: center;">
+                <span style="color: var(--latex-myorange); font-weight: bold;">j pointer:</span> first zero index &nbsp;|&nbsp; 
+                <span style="color: var(--latex-mygreen); font-weight: bold;">i pointer:</span> current scanning non-zero item
+              </div>
+            </div>
+
+            <div class="tcb-box tcb-int">
+              <div class="tcb-box-title">Interview Corner: Two-Pointer Optimal Strategy</div>
+              <div class="tcb-content">
+                A naive solution uses an auxiliary array of size <i>n</i>, copying non-zero items first. Space: O(n).<br>
+                The optimal approach runs in <strong>O(n) Time</strong> and <strong>O(1) Auxiliary Space</strong>:
+                <ol>
+                  <li>Find the first <code>0</code> element at index <code>j</code>.</li>
+                  <li>Scan with pointer <code>i = j + 1</code>. Whenever <code>arr[i] != 0</code>, swap <code>arr[i]</code> with <code>arr[j]</code> and increment <code>j</code>.</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- Java Code Block -->
+            <div class="code-container">
+              <div class="code-listing"><div class="code-line"><span class="code-ln">1</span><span class="code-txt"><span class="code-keyword">public void</span> moveZeroes(<span class="code-keyword">int</span>[] nums) {</span></div><div class="code-line"><span class="code-ln">2</span><span class="code-txt">    <span class="code-keyword">int</span> j = -1;</span></div><div class="code-line"><span class="code-ln">3</span><span class="code-txt">    <span class="code-comment">// find first zero</span></span></div><div class="code-line"><span class="code-ln">4</span><span class="code-txt">    <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = 0; i &lt; nums.length; i++) {</span></div><div class="code-line"><span class="code-ln">5</span><span class="code-txt">        <span class="code-keyword">if</span> (nums[i] == 0) { j = i; <span class="code-keyword">break</span>; }</span></div><div class="code-line"><span class="code-ln">6</span><span class="code-txt">    }</span></div><div class="code-line"><span class="code-ln">7</span><span class="code-txt">    <span class="code-keyword">if</span> (j == -1) <span class="code-keyword">return</span>; <span class="code-comment">// no zeroes</span></span></div><div class="code-line"><span class="code-ln">8</span><span class="code-txt">    <span class="code-comment">// swap non-zero elements into zero slots</span></span></div><div class="code-line"><span class="code-ln">9</span><span class="code-txt">    <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = j + 1; i &lt; nums.length; i++) {</span></div><div class="code-line"><span class="code-ln">10</span><span class="code-txt">        <span class="code-keyword">if</span> (nums[i] != 0) {</span></div><div class="code-line"><span class="code-ln">11</span><span class="code-txt">            <span class="code-keyword">int</span> temp = nums[i]; nums[i] = nums[j]; nums[j] = temp;</span></div><div class="code-line"><span class="code-ln">12</span><span class="code-txt">            j++;</span></div><div class="code-line"><span class="code-ln">13</span><span class="code-txt">        }</span></div><div class="code-line"><span class="code-ln">14</span><span class="code-txt">    }</span></div><div class="code-line"><span class="code-ln">15</span><span class="code-txt">}</span></div></div>
+            </div>
+
+            <div class="book-page-footer">
+              <span class="book-page-watermark">© Biraj's Notes</span>
+              <span>54</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+  <footer id="global-footer" data-layout="standard"></footer>
+
+  <!-- ── Scripts ────────────────────────────────────────────────────────────── -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="scripts/components-loader.js" defer></script>
+  <script src="scripts/constants.js" defer></script>
+  <script src="scripts/github-api.js" defer></script>
+  <script src="scripts/reader.js" defer></script>
+  <script src="scripts/reader-page.js" defer></script>
+</body>
+</html>
