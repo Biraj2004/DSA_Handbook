@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA Handbook — Build Instructions</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --myblue:      rgb(20,60,120);
+    --mybluelt:    rgb(25,84,155);
+    --myorange:    rgb(210,100,0);
+    --mygreen:     rgb(30,130,60);
+    --myred:       rgb(190,35,35);
+    --myteal:      rgb(0,110,100);
+    --mysteelblue: rgb(50,90,140);
+    --mygray:      rgb(90,90,100);
+    --coverbg:     rgb(18,28,52);
+
+    --bg:    #f7f5f0;
+    --card:  #ffffff;
+    --text:  #1a1a1a;
+    --muted: #6b6b72;
+    --border:#e2ddd6;
+    --code-bg: rgb(246,248,250);
+    --code-border: rgb(208,215,222);
+    --accent: var(--myred);
+
+    --ff-display: 'DM Serif Display', Georgia, serif;
+    --ff-body:    'Instrument Sans', sans-serif;
+    --ff-mono:    'DM Mono', monospace;
+
+    --radius: 8px;
+    --radius-lg: 14px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--ff-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--coverbg);
+    color: #fff;
+    padding: 64px 24px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(190,35,35,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(25,84,155,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+  .hero-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+  }
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.65);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    letter-spacing: 0.04em;
+  }
+  .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--myred);
+    display: inline-block;
+  }
+  .pill-dot.green { background: var(--mygreen); }
+  .pill-dot.blue  { background: var(--mybluelt); }
+
+  /* ── NAV TABS ── */
+  .nav-wrap {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-tab {
+    font-family: var(--ff-body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 18px;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.18s, border-color 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--myred); border-bottom-color: var(--myred); }
+
+  /* ── LAYOUT ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .section-num {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--myred);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-rule {
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+    margin-bottom: 24px;
+    margin-top: -8px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+  }
+
+  /* ── PURPOSE BOX ── */
+  .purpose-card {
+    border-left: 3px solid var(--myred);
+    background: var(--card);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    padding: 20px 22px;
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--text);
+    box-shadow: var(--shadow);
+  }
+  .purpose-card strong { color: var(--myred); font-weight: 600; }
+
+  /* ── RULE ROWS ── */
+  .rule-list { display: flex; flex-direction: column; gap: 0; }
+  .rule-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    align-items: flex-start;
+  }
+  .rule-row:last-child { border-bottom: none; }
+  .rule-label {
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    color: var(--mygreen);
+    font-weight: 500;
+    padding-top: 2px;
+    letter-spacing: 0.02em;
+  }
+  .rule-val { color: var(--text); line-height: 1.7; }
+
+  code {
+    font-family: var(--ff-mono);
+    font-size: 12.5px;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--mysteelblue);
+  }
+
+  /* ── FONTS TABLE ── */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 0;
+    font-size: 14px;
+  }
+  .meta-row {
+    display: contents;
+  }
+  .meta-row > * {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .meta-row:last-child > * { border-bottom: none; }
+  .meta-key {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .meta-val { color: var(--text); }
+
+  /* ── COLOR SWATCHES ── */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .swatch {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .swatch-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  .swatch-name { font-family: var(--ff-mono); font-size: 12px; color: var(--text); }
+  .swatch-rgb  { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  /* ── HEADING HIERARCHY ── */
+  .hierarchy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .hierarchy-table th {
+    background: var(--code-bg);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .hierarchy-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .hierarchy-table tr:last-child td { border-bottom: none; }
+  .h-level { font-weight: 600; }
+
+  /* ── DSA SECTION ── */
+  .dsa-card {
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--myred);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background: var(--card);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .dsa-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .dsa-row:last-child { border-bottom: none; }
+  .dsa-key {
+    background: rgb(246,248,250);
+    padding: 16px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--myblue);
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5;
+    border-right: 1px solid var(--border);
+  }
+  .dsa-val {
+    padding: 16px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  .flow-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--text);
+  }
+  .flow-step-badge {
+    background: var(--coverbg);
+    color: #fff;
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .flow-arrow {
+    color: var(--border);
+    font-size: 14px;
+    margin: 0 -2px;
+  }
+
+  .source-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    color: var(--mybluelt);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .source-link:hover {
+    background: rgb(230,241,251);
+    border-color: var(--mybluelt);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--muted);
+    padding: 24px;
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .rule-row { grid-template-columns: 1fr; gap: 4px; }
+    .meta-grid { grid-template-columns: 1fr; }
+    .meta-row > *:first-child { padding-bottom: 0; border-bottom: none; }
+    .dsa-row { grid-template-columns: 1fr; }
+    .dsa-key { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 16px; }
+    .dsa-val { padding: 12px 16px; }
+    .flow-steps { gap: 4px; }
+    .flow-arrow { display: none; }
+    .hero { padding: 44px 20px 36px; }
+    .nav-tab { padding: 13px 14px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Handbook System / Reference</div>
+    <h1>DSA Handbook<br><em>Build Instructions</em></h1>
+    <p class="hero-desc">A complete reference for generating consistent, professional LaTeX output — covering formatting, fonts, colors, structure, and DSA-specific conventions.</p>
+    <div class="hero-meta">
+      <span class="pill"><span class="pill-dot"></span>XeLaTeX only</span>
+      <span class="pill"><span class="pill-dot blue"></span>Java DSA</span>
+      <span class="pill"><span class="pill-dot green"></span>No duplicates</span>
+      <span class="pill"><span class="pill-dot"></span>Auto-ordered TOC</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav-inner" aria-label="Sections">
+    <a href="#purpose"     class="nav-tab active">Purpose</a>
+    <a href="#formatting"  class="nav-tab">LaTeX Formatting</a>
+    <a href="#fonts"       class="nav-tab">Fonts &amp; Compilation</a>
+    <a href="#colors"      class="nav-tab">Colors &amp; Headings</a>
+    <a href="#toc"         class="nav-tab">TOC</a>
+    <a href="#dsa"         class="nav-tab">DSA-Specific</a>
+  </nav>
+</div>
+
+<main class="main">
+
+  <!-- 1. PURPOSE -->
+  <section class="section" id="purpose">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Purpose</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="purpose-card">
+      A structured, printable, professional PDF handbook built from handwritten notes, solved problems, and curated web resources. Topics are automatically ordered <strong>basic → advanced</strong>, even if content is provided out of order. <strong>No duplicate content</strong> — if the same topic is given multiple times, analyze all versions and keep one best copy. The TOC and chapter structure remain synchronized at all times.
+    </div>
+  </section>
+
+  <!-- 2. LATEX FORMATTING -->
+  <section class="section" id="formatting">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">LaTeX Formatting</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="card">
+      <div class="rule-list">
+
+        <div class="rule-row">
+          <span class="rule-label">Math</span>
+          <span class="rule-val">
+            Inline: <code>$...$</code> &nbsp; Display: <code>$$...$$</code><br>
+            Never use <code>\[...\]</code>. Avoid <code>\text{}</code> and unnecessary backslashes. Prefer single-line expressions.
+          </span>
+        </div>
+
+        <div class="rule-row">
+          <span class="rule-label">Page setup</span>
+          <span class="rule-val">
+            <code>\setlength{\parindent}{0pt}</code> &nbsp;
+            <code>\setlength{\parskip}{8pt}</code> (6pt for exam style)<br>
+            <code>\usepackage[a4paper, margin=0.8in]{geometry}</code>
+          </span>
+        </div>
+
+        <div class="rule-row">
+          <span class="rule-label">Tables</span>
+          <span class="rule-val">
+            Column count must match spec exactly — no extra <code>&</code>.<br>
+            Global: <code>\arraystretch=1.35</code>, <code>\tabcolsep=7pt</code>.<br>
+            Primitive types table: use <code>!{\color{black!30}\vrule}</code> column separators between all 5 columns.
+          </span>
+        </div>
+
+        <div class="rule-row">
+          <span class="rule-label">TikZ</span>
+          <span class="rule-val">
+            Load all required libraries. Define nodes before use.<br>
+            Fills: strictly light tints — max <code>!10</code>. Never <code>!50+</code> or bare color names. Text inside nodes must always be readable.
+          </span>
+        </div>
+
+        <div class="rule-row">
+          <span class="rule-label">Code blocks</span>
+          <span class="rule-val">
+            Background <code>RGB(246,248,250)</code> (GitHub light gray).<br>
+            Comments <code>RGB(106,153,85)</code> italic (GitHub green).<br>
+            Border <code>RGB(208,215,222)</code>, single frame. <strong>Never dark backgrounds.</strong>
+          </span>
+        </div>
+
+        <div class="rule-row">
+          <span class="rule-label">tcolorbox gap</span>
+          <span class="rule-val">
+            <code>\tcbset{before skip=14pt, after skip=14pt}</code> — uniform gap between all boxes.
+          </span>
+        </div>
+
+        <div class="rule-row">
+          <span class="rule-label">Branding</span>
+          <span class="rule-val">
+            Small muted footer or watermark — <em>"© Biraj"</em> or <em>"Biraj's Notes"</em> — on every page. Unobtrusive but always present.
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FONTS & COMPILATION -->
+  <section class="section" id="fonts">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Fonts &amp; Compilation</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="card">
+      <div class="meta-grid">
+        <div class="meta-row">
+          <div class="meta-key">Compiler</div>
+          <div class="meta-val"><strong>XeLaTeX only</strong> — never pdflatex</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Main font</div>
+          <div class="meta-val"><code>\setmainfont{TeX Gyre Pagella}</code><br><span style="font-size:12.5px; color:var(--muted);">Overleaf source: <code>Calibri</code></span></div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Mono font</div>
+          <div class="meta-val"><code>\setmonofont[Scale=0.88]{TeX Gyre Cursor}</code></div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Math font</div>
+          <div class="meta-val"><code>\setmathfont{Latin Modern Math}</code></div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Deliverables</div>
+          <div class="meta-val">Always both <code>.tex</code> source and compiled <code>.pdf</code></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. COLORS & HEADINGS -->
+  <section class="section" id="colors">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Colors &amp; Heading Hierarchy</h2>
+    </div>
+    <div class="section-rule"></div>
+
+    <!-- Swatches -->
+    <div class="swatch-grid">
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(20,60,120)"></span><div><div class="swatch-name">myblue</div><div class="swatch-rgb">20, 60, 120</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(25,84,155)"></span><div><div class="swatch-name">mybluelt</div><div class="swatch-rgb">25, 84, 155</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(210,100,0)"></span><div><div class="swatch-name">myorange</div><div class="swatch-rgb">210, 100, 0</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(30,130,60)"></span><div><div class="swatch-name">mygreen</div><div class="swatch-rgb">30, 130, 60</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(190,35,35)"></span><div><div class="swatch-name">myred</div><div class="swatch-rgb">190, 35, 35</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(0,110,100)"></span><div><div class="swatch-name">myteal</div><div class="swatch-rgb">0, 110, 100</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(50,90,140)"></span><div><div class="swatch-name">mysteelblue</div><div class="swatch-rgb">50, 90, 140</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(90,90,100)"></span><div><div class="swatch-name">mygray</div><div class="swatch-rgb">90, 90, 100</div></div></div>
+      <div class="swatch"><span class="swatch-dot" style="background:rgb(18,28,52)"></span><div><div class="swatch-name">coverbg</div><div class="swatch-rgb">18, 28, 52</div></div></div>
+    </div>
+
+    <!-- Hierarchy table -->
+    <div class="card" style="padding:0; overflow:hidden;">
+      <table class="hierarchy-table">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Color name</th>
+            <th>RGB</th>
+            <th>Spacing (l/before/after)</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="h-level" style="color:rgb(190,35,35)">Chapter</td>
+            <td><code>myred</code></td>
+            <td style="color:var(--muted); font-size:12.5px;">190, 35, 35</td>
+            <td><code>0pt / 10pt / 16pt</code></td>
+            <td style="font-size:12.5px; color:var(--muted);">Use <code>\protect\color{myred}</code> to prevent hyperref override</td>
+          </tr>
+          <tr>
+            <td class="h-level" style="color:rgb(20,60,120)">Section</td>
+            <td><code>myblue</code></td>
+            <td style="color:var(--muted); font-size:12.5px;">20, 60, 120</td>
+            <td><code>0pt / 18pt / 8pt</code></td>
+            <td style="font-size:12.5px; color:var(--muted);">Underline: <code>black!20</code> rule</td>
+          </tr>
+          <tr>
+            <td class="h-level" style="color:rgb(0,110,100)">Subsection</td>
+            <td><code>myteal</code></td>
+            <td style="color:var(--muted); font-size:12.5px;">0, 110, 100</td>
+            <td><code>0pt / 14pt / 6pt</code></td>
+            <td style="font-size:12.5px; color:var(--muted);">Underline: <code>black!20</code> rule</td>
+          </tr>
+          <tr>
+            <td class="h-level" style="color:rgb(50,90,140)">Subsubsection</td>
+            <td><code>mysteelblue</code></td>
+            <td style="color:var(--muted); font-size:12.5px;">50, 90, 140</td>
+            <td><code>0pt / 10pt / 4pt</code></td>
+            <td style="font-size:12.5px; color:var(--muted);">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:14px; font-size:13.5px; color:var(--muted); line-height:1.75; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px;">
+      Chapter rules: <code>1.5pt</code> black + <code>0.5pt black!25</code>. All horizontal rules use <code>black</code>, never colored. TOC rules: black.
+      <code>hyperref</code> loaded last; <code>linkcolor=black</code>, <code>urlcolor=mybluelt</code>.
+    </div>
+  </section>
+
+  <!-- 5. TOC -->
+  <section class="section" id="toc">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Table of Contents (tocloft)</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="card">
+      <div class="rule-list">
+        <div class="rule-row">
+          <span class="rule-label">Load order</span>
+          <span class="rule-val">Load <code>tocloft</code> after color definitions, <code>hyperref</code> last.</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-label">Heading color</span>
+          <span class="rule-val">"Contents" title: <code>myred</code> only via <code>\cfttoctitlefont</code>.</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-label">Entry colors</span>
+          <span class="rule-val">
+            <code>\cftchapfont</code> → <strong style="color:rgb(20,60,120)">myblue bold</strong><br>
+            <code>\cftsecfont</code> → <strong style="color:rgb(0,110,100)">myteal</strong><br>
+            <code>\cftsubsecfont</code> → <strong style="color:rgb(50,90,140)">mysteelblue small</strong>
+          </span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-label">Rules</span>
+          <span class="rule-val">TOC rules: black, not colored. Chapter page numbers: <code>myblue bold</code>.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DSA SPECIFIC -->
+  <section class="section" id="dsa">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">DSA-Specific</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="dsa-card">
+
+      <div class="dsa-row">
+        <div class="dsa-key">Language</div>
+        <div class="dsa-val">Java only. Beginner-friendly. No step jumps — every line simple and easy to follow.</div>
+      </div>
+
+      <div class="dsa-row">
+        <div class="dsa-key">Depth</div>
+        <div class="dsa-val">Shallow to medium. Clean explanations, not exhaustive academic depth. Interview-ready focus.</div>
+      </div>
+
+      <div class="dsa-row">
+        <div class="dsa-key">Topic flow</div>
+        <div class="dsa-val">
+          Each topic must follow this exact order:
+          <div class="flow-steps">
+            <span class="flow-step"><span class="flow-step-badge">Explanation</span></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-step-badge">Code</span></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-step-badge">Dry Run</span></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-step-badge">TikZ Visual</span></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-step-badge">Complexity</span></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-step-badge">Examples</span></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-step-badge">Interview Corner</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dsa-row">
+        <div class="dsa-key">Ordering</div>
+        <div class="dsa-val">Topics always maintained basic → advanced even if content arrives randomly. TOC stays synchronized.</div>
+      </div>
+
+      <div class="dsa-row">
+        <div class="dsa-key">Deduplication</div>
+        <div class="dsa-val">If the same topic is submitted multiple times, analyze all versions and retain one best copy. No duplicates in the final PDF.</div>
+      </div>
+
+      <div class="dsa-row">
+        <div class="dsa-key">External sources</div>
+        <div class="dsa-val">
+          <div class="source-links">
+            <a class="source-link" href="https://www.codehelp.in/dashboard/articles" target="_blank">↗ codehelp.in</a>
+            <a class="source-link" href="https://www.w3schools.com/" target="_blank">↗ w3schools.com</a>
+            <a class="source-link" href="https://www.geeksforgeeks.org/" target="_blank">↗ geeksforgeeks.org</a>
+            <a class="source-link" href="https://takeuforward.org/" target="_blank">↗ takeuforward.org</a>
+            <a class="source-link" href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank">↗ apnacollege</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">© Biraj — DSA Handbook Build Instructions</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tabs.forEach(t => {
+          t.classList.toggle('active', t.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+Handbook built in LaTeX from handwritten notes, learning materials, solved problems, and curated web resources. The handbook is automatically organized from basic to advanced topics, maintaining synchronized contents, contents page, and chapter structure even when new content is added out of order. Designed for shallow-to-medium depth learning, it focuses on clean explanations. The system continuously updates into a structured, printable, and professional PDF knowledge base tailored specifically for my learning journey.
+
+No duplicate content should be in PDF (even if i have given two or more time the same thing, analyze all and then keep one)
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+LaTeX formatting (always apply):
+
+Math in Markdown: use $...$ for inline and $$...$$ for display math; avoid \[...\] or other delimiters; prefer single-line expressions for cleanliness.
+Avoid \text and unnecessary backslashes in LaTeX math notation.
+Always include \setlength{\parindent}{0pt} and \setlength{\parskip}{8pt} (or 6pt in exam style) in LaTeX reports.
+Use \usepackage[a4paper, margin=0.8in]{geometry}.
+Table & counts must match the column spec exactly; no extra &.
+TikZ: load all required libraries, define nodes before referencing, use strictly light tints only — myred!10, myblue!10, mygreen!10, gray!15; never solid or dark fills (!50 and above, or bare color names); text inside nodes must always be readable.
+Code block style: background RGB(246,248,250) (GitHub light gray); comment color RGB(106,153,85) italic (GitHub green); subtle single-frame border RGB(208,215,222); never dark code backgrounds.
+
+Always add subtle "Biraj" branding — small footer or watermark credit such as "© Biraj" or "Biraj's Notes" in a muted color, unobtrusive but present on every page.
+
+LaTeX font and compilation:
+
+Use XeLaTeX (not pdflatex) for PDF generation.
+Fonts: \setmainfont{TeX Gyre Pagella}, \setmonofont[Scale=0.88]{TeX Gyre Cursor}, \setmathfont{Latin Modern Math}.
+For Overleaf .tex source specifically: \setmainfont{Calibri}.
+Always deliver both .tex source and compiled .pdf.
+
+Extra:
+
+Colors defined: myblue{20,60,120}, mybluelt{25,84,155}, myorange{210,100,0}, mygreen{30,130,60}, myred{190,35,35}, myteal{0,110,100}, mysteelblue{50,90,140}, mygray{90,90,100}, coverbg{18,28,52}
+4-level heading color hierarchy: Chapter → myred, Section → myblue, Subsection → myteal, Subsubsection → mysteelblue
+\protect\color{myred} used throughout \titleformat{\chapter} to prevent hyperref from overriding chapter title color
+\titlespacing* set explicitly: chapter {0pt}{10pt}{16pt}, section {0pt}{18pt}{8pt}, subsection {0pt}{14pt}{6pt}, subsubsection {0pt}{10pt}{4pt}
+Section underline: \color{black!20}\rule — all horizontal rules black not colored
+Chapter rules: thick black 1.5pt + thin black!25 0.5pt
+tocloft loaded after color definitions; TOC "Contents" heading only in myred via \cfttoctitlefont; TOC rules black
+TOC entry colors: \cftchapfont → myblue bold, \cftsecfont → myteal, \cftsubsecfont → mysteelblue small
+hyperref loaded last; linkcolor=black so it never overrides tocloft TOC entry colors or heading colors; urlcolor=mybluelt
+colortbl package added; \arraystretch=1.35, \tabcolsep=7pt set globally for all tables
+Primitive types table: column separators via !{\color{black!30}\vrule} between all 5 columns
+\tcbset{before skip=14pt, after skip=14pt} — uniform gap between all tcolorboxes.
+
+
+Maintain proper topic sequencing automatically even if content is provided randomly. Ensure all sections remain synchronized with the index and table of contents.
+
+---------------------------------------------------------------------------------------------------------------------
+
+
